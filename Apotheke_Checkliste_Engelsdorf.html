@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontrollvorbereitung – Engelsdorfer Apotheke</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Roboto',Arial,sans-serif;background:#fff;color:#1f1f1f;font-size:14px}
+
+/* ── HEADER ── */
+.site-header{background:#fff;border-bottom:1px solid #dde5de;padding:0 24px;position:sticky;top:0;z-index:100;box-shadow:0 1px 4px rgba(0,0,0,0.08)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:62px;max-width:1000px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-text-top{font-size:10px;color:#888;letter-spacing:0.04em}
+.logo-text-main{font-size:18px;font-weight:700;color:#036918;letter-spacing:-0.01em;line-height:1.1}
+.site-nav{display:flex;gap:22px}
+.site-nav a{font-size:14px;font-weight:500;color:#1f1f1f;text-decoration:none;padding-bottom:3px;border-bottom:2px solid transparent}
+.site-nav a.active{color:#036918;border-bottom-color:#036918}
+
+/* ── GREEN BAND ── */
+.green-band{background:#8dbd97;padding:14px 24px}
+.green-band-inner{max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.band-title{font-size:15px;font-weight:700;color:#fff}
+.band-sub{font-size:12px;color:rgba(255,255,255,0.85);margin-top:2px}
+.user-wrap{display:flex;align-items:center;gap:10px}
+.user-wrap label{font-size:12px;color:rgba(255,255,255,0.9);white-space:nowrap}
+.user-wrap input{background:rgba(255,255,255,0.92);border:none;border-radius:4px;padding:7px 12px;font-size:13px;font-family:inherit;color:#1f1f1f;outline:none;width:200px}
+.user-check{font-size:14px;font-weight:700;color:#fff}
+
+/* ── STATS ── */
+.stats-bar{background:#f5f7f5;border-bottom:1px solid #dde5de;max-width:1000px;margin:0 auto}
+.stats-inner{display:flex;border-left:1px solid #dde5de}
+.stat-cell{flex:1;text-align:center;padding:14px 8px;border-right:1px solid #dde5de}
+.stat-num{font-size:26px;font-weight:700;line-height:1}
+.stat-num.total{color:#1f1f1f}
+.stat-num.offen{color:#c41e3a}
+.stat-num.arbeit{color:#c87800}
+.stat-num.erledigt{color:#036918}
+.stat-num.na{color:#6b7a6d}
+.stat-label{font-size:10px;color:#888;text-transform:uppercase;letter-spacing:0.1em;margin-top:3px}
+
+/* ── PROGRESS ── */
+.progress-wrap{max-width:1000px;margin:0 auto;background:#f5f7f5;padding:6px 16px 14px;border-bottom:1px solid #dde5de}
+.progress-meta{display:flex;justify-content:space-between;font-size:11px;color:#888;margin-bottom:5px}
+.progress-track{height:8px;background:#dde5de;border-radius:99px;overflow:hidden;display:flex}
+.seg-done{background:#036918;height:100%;transition:width .4s}
+.seg-arbeit{background:#c87800;height:100%;transition:width .4s}
+.seg-na{background:#6b7a6d;height:100%;transition:width .4s}
+
+/* ── FILTER ── */
+.filter-bar{background:#fff;border-bottom:1px solid #dde5de;padding:10px 24px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;position:sticky;top:62px;z-index:90;box-shadow:0 2px 4px rgba(0,0,0,0.05)}
+.filter-label{font-size:10px;color:#888;text-transform:uppercase;letter-spacing:0.1em;margin-right:4px}
+.filter-btn{border:1.5px solid #dde5de;background:transparent;border-radius:3px;padding:5px 13px;font-size:12px;font-family:inherit;cursor:pointer;color:#555;display:flex;align-items:center;gap:5px;transition:all .15s}
+.filter-btn:hover{border-color:#036918;color:#036918}
+.filter-btn.active{background:#036918;border-color:#036918;color:#fff;font-weight:600}
+.filter-dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+
+/* ── MAIN ── */
+.main{max-width:1000px;margin:0 auto;padding:20px 24px 100px}
+
+/* ── SECTION ── */
+.section-block{margin-bottom:14px;border:1px solid #dde5de;border-radius:5px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.05)}
+.section-head{background:#f0f4f0;border-bottom:1px solid #dde5de;padding:11px 16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none;transition:background .15s}
+.section-head:hover{background:#e8f2ea}
+.section-head.all-done{background:#e8f2ea}
+.sec-title{font-size:13px;font-weight:600;color:#1f1f1f;display:flex;align-items:center;gap:8px}
+.sec-title.done-title{color:#036918}
+.sec-check{color:#036918;font-size:14px}
+.sec-meta{display:flex;align-items:center;gap:10px}
+.sec-minibar{width:60px;height:5px;background:#dde5de;border-radius:99px;overflow:hidden}
+.sec-minibar-fill{height:100%;background:#036918;transition:width .3s}
+.sec-count{font-size:11px;color:#888;min-width:34px;text-align:right}
+.sec-toggle{color:#888;font-size:12px;transition:transform .2s;display:inline-block}
+.collapsed .sec-toggle{transform:rotate(-90deg)}
+.section-body{display:block}
+.collapsed .section-body{display:none}
+
+/* ── ITEM ── */
+.check-item{display:flex;align-items:flex-start;border-bottom:1px solid #eef1ee;transition:background .12s}
+.check-item:last-child{border-bottom:none}
+.check-item:hover{background:#fafbfa}
+.check-item[data-st="Erledigt"]{background:#f5fbf5;border-left:3px solid #036918}
+.check-item[data-st="In Arbeit"]{background:#fdfaf4;border-left:3px solid #c87800}
+.check-item[data-st="Offen"]{border-left:3px solid #c41e3a}
+.check-item[data-st="N/A"]{background:#fafafa;border-left:3px solid #6b7a6d}
+.item-nr{font-size:10px;color:#888;padding:13px 10px 13px 12px;min-width:50px;flex-shrink:0;font-family:monospace}
+.item-body{flex:1;padding:12px 6px 12px 0}
+.item-text{font-size:13px;line-height:1.55;color:#1f1f1f}
+.item-text.done{text-decoration:line-through;color:#888}
+.item-text.na{text-decoration:line-through;color:#aaa}
+.custom-badge{font-size:10px;background:#e8f5e9;color:#036918;border:1px solid #8dbd97;border-radius:3px;padding:1px 5px;margin-left:6px;vertical-align:middle}
+.item-meta{font-size:10px;color:#aaa;margin-top:3px}
+.item-controls{display:flex;align-items:center;gap:3px;padding:9px 12px 9px 6px;flex-shrink:0;flex-wrap:wrap}
+.st-btn{border:1.5px solid #dde5de;background:transparent;border-radius:3px;padding:3px 8px;font-size:11px;font-family:inherit;cursor:pointer;color:#888;transition:all .12s;white-space:nowrap}
+.st-btn:hover{opacity:.8}
+.st-btn.active-Offen{border-color:#c41e3a;background:#fdf0f2;color:#c41e3a;font-weight:700}
+.st-btn.active-InArbeit{border-color:#c87800;background:#fdf6e8;color:#c87800;font-weight:700}
+.st-btn.active-Erledigt{border-color:#036918;background:#e8f2ea;color:#036918;font-weight:700}
+.st-btn.active-NA{border-color:#6b7a6d;background:#f2f4f2;color:#6b7a6d;font-weight:700}
+.del-btn{border:none;background:transparent;color:#dde5de;cursor:pointer;font-size:13px;padding:2px 5px;border-radius:3px;transition:color .15s;margin-left:2px}
+.del-btn:hover{color:#c41e3a}
+
+/* ── ADD ROW ── */
+.add-row{background:#f5f7f5;border-top:1px dashed #dde5de;padding:8px 16px}
+.add-btn{background:transparent;border:1.5px dashed #ccc;border-radius:3px;padding:5px 14px;font-size:12px;font-family:inherit;color:#888;cursor:pointer;transition:all .15s}
+.add-btn:hover{border-color:#036918;color:#036918}
+
+/* ── MODAL ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:500;display:none;align-items:center;justify-content:center}
+.modal-overlay.open{display:flex}
+.modal{background:#fff;border-radius:5px;width:min(480px,92vw);box-shadow:0 12px 40px rgba(0,0,0,0.2);overflow:hidden}
+.modal-head{background:#8dbd97;padding:14px 20px}
+.modal-head-title{font-size:15px;font-weight:700;color:#fff}
+.modal-head-sub{font-size:11px;color:rgba(255,255,255,0.85);margin-top:2px}
+.modal-body{padding:20px}
+.modal label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:#888;margin-bottom:5px;margin-top:14px}
+.modal label:first-child{margin-top:0}
+.modal textarea,.modal input,.modal select{width:100%;border:1.5px solid #dde5de;border-radius:4px;padding:8px 10px;font-family:inherit;font-size:13px;outline:none;transition:border-color .15s;background:#fff}
+.modal textarea:focus,.modal input:focus,.modal select:focus{border-color:#036918}
+.modal textarea{min-height:80px;resize:vertical}
+.modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:18px}
+.btn-cancel{border:1.5px solid #dde5de;background:transparent;border-radius:4px;padding:8px 18px;font-family:inherit;font-size:13px;cursor:pointer;color:#555}
+.btn-save{background:#036918;border:none;border-radius:4px;padding:8px 22px;font-family:inherit;font-size:13px;font-weight:700;color:#fff;cursor:pointer}
+.btn-save:hover{background:#025514}
+
+/* ── EXPORT ── */
+.export-btn{position:fixed;bottom:20px;left:20px;background:#036918;border:none;border-radius:99px;padding:10px 22px;font-family:inherit;font-size:13px;font-weight:700;color:#fff;cursor:pointer;box-shadow:0 4px 14px rgba(3,105,24,0.35);transition:all .2s;z-index:200}
+.export-btn:hover{background:#025514;transform:translateY(-1px)}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:20px;right:20px;background:#036918;color:#fff;padding:10px 16px;border-radius:4px;font-size:13px;font-weight:500;box-shadow:0 4px 16px rgba(3,105,24,0.35);z-index:300;opacity:0;transform:translateY(8px);transition:all .25s;pointer-events:none}
+.toast.show{opacity:1;transform:translateY(0)}
+
+/* ── FOOTER ── */
+footer{background:#8dbd97;padding:14px 24px;text-align:center}
+footer p{font-size:12px;color:rgba(255,255,255,0.9)}
+
+@media(max-width:640px){
+  .site-nav{display:none}
+  .green-band-inner{flex-direction:column;align-items:flex-start}
+  .stats-inner{flex-wrap:wrap}
+  .stat-cell{min-width:33%}
+  .item-controls{flex-wrap:wrap;gap:3px}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="#">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+        <path d="M7 29L18 5L29 29" stroke="#036918" stroke-width="3" stroke-linejoin="round" fill="none"/>
+        <path d="M11 21L25 21" stroke="#036918" stroke-width="2.5"/>
+        <path d="M4 11Q9 3 15 7Q11 9 9 14" fill="#c41e3a"/>
+      </svg>
+      <div>
+        <div class="logo-text-top">Engelsdorfer</div>
+        <div class="logo-text-main">Apotheke</div>
+      </div>
+    </a>
+    <nav class="site-nav">
+      <a href="https://engelsdorfer-apotheke.de/" class="active">Startseite</a>
+      <a href="https://engelsdorfer-apotheke.de/">Vorbestellen</a>
+      <a href="https://engelsdorfer-apotheke.de/">Kontakt</a>
+      <a href="https://engelsdorfer-apotheke.de/">Notdienst</a>
+    </nav>
+  </div>
+</header>
+
+<!-- GREEN BAND -->
+<div class="green-band">
+  <div class="green-band-inner">
+    <div>
+      <div class="band-title">Kontrollvorbereitung – Apothekenbesichtigung</div>
+      <div class="band-sub">Landesdirektion Sachsen · ApBetrO 2024 · 126 Prüfpunkte</div>
+    </div>
+    <div class="user-wrap">
+      <label for="userName">Bearbeiter/in:</label>
+      <input type="text" id="userName" placeholder="Namen eingeben …" autocomplete="off">
+      <span class="user-check" id="userCheck" style="display:none">✓</span>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div style="background:#f5f7f5;border-bottom:1px solid #dde5de">
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat-cell"><div class="stat-num total" id="st-total">0</div><div class="stat-label">Gesamt</div></div>
+      <div class="stat-cell"><div class="stat-num offen" id="st-offen">0</div><div class="stat-label">Offen</div></div>
+      <div class="stat-cell"><div class="stat-num arbeit" id="st-arbeit">0</div><div class="stat-label">In Arbeit</div></div>
+      <div class="stat-cell"><div class="stat-num erledigt" id="st-erledigt">0</div><div class="stat-label">Erledigt</div></div>
+      <div class="stat-cell"><div class="stat-num na" id="st-na">0</div><div class="stat-label">N/A</div></div>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-meta">
+      <span id="pct-label">0 % abgearbeitet</span>
+      <span id="pct-detail"></span>
+    </div>
+    <div class="progress-track">
+      <div class="seg-done" id="seg-done" style="width:0%"></div>
+      <div class="seg-arbeit" id="seg-arbeit" style="width:0%"></div>
+      <div class="seg-na" id="seg-na" style="width:0%"></div>
+    </div>
+  </div>
+</div>
+
+<!-- FILTER -->
+<div class="filter-bar">
+  <span class="filter-label">Filter:</span>
+  <button class="filter-btn active" data-f="all">Alle</button>
+  <button class="filter-btn" data-f="Offen"><span class="filter-dot" style="background:#c41e3a"></span>Offen <span id="fc-offen"></span></button>
+  <button class="filter-btn" data-f="In Arbeit"><span class="filter-dot" style="background:#c87800"></span>In Arbeit <span id="fc-arbeit"></span></button>
+  <button class="filter-btn" data-f="Erledigt"><span class="filter-dot" style="background:#036918"></span>Erledigt <span id="fc-erl"></span></button>
+  <button class="filter-btn" data-f="N/A"><span class="filter-dot" style="background:#6b7a6d"></span>N/A <span id="fc-na"></span></button>
+</div>
+
+<!-- MAIN -->
+<main class="main" id="main"></main>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-head">
+      <div class="modal-head-title">Prüfpunkt hinzufügen</div>
+      <div class="modal-head-sub" id="modalSub">–</div>
+    </div>
+    <div class="modal-body">
+      <label>Prüfpunkt *</label>
+      <textarea id="mText" placeholder="Beschreibung des Prüfpunkts …"></textarea>
+      <label>Abschnitt</label>
+      <select id="mSec"></select>
+      <label>Nummer (optional)</label>
+      <input type="text" id="mNr" placeholder="z. B. 3.7 oder K-01">
+      <div class="modal-actions">
+        <button class="btn-cancel" onclick="closeModal()">Abbrechen</button>
+        <button class="btn-save" onclick="saveItem()">Hinzufügen</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="export-btn" onclick="exportCSV()">⬇ Export CSV</button>
+<div class="toast" id="toast"></div>
+
+<footer>
+  <p>Engelsdorfer Apotheke · Werkstättenstr. 6, 04319 Leipzig · Tel. 0341 651 3191</p>
+</footer>
+
+<script>
+const DATA = [{"title": "1. BETRIEBSERLAUBNIS & ZULASSUNGEN", "items": [{"nr": "1.1", "text": "Betriebserlaubnis (§ 1 ApoG) vorhanden und aktuell"}, {"nr": "1.2", "text": "Apothekenleiter-Bestallungsurkunde / Approbationsurkunde liegt vor"}, {"nr": "1.3", "text": "Stellvertretungsregelung dokumentiert (§ 2 Abs. 6 ApoG)"}, {"nr": "1.4", "text": "Filialapotheken: eigene Betriebserlaubnisse vorhanden (falls zutreffend)"}, {"nr": "1.5", "text": "Versandhandelserlaubnis aktuell (falls zutreffend, § 11a ApoG)"}, {"nr": "1.6", "text": "EU-Sicherheitslogo sichtbar auf Website (Versand)"}]}, {"title": "2. RÄUMLICHKEITEN & AUSSTATTUNG (§§ 4–8 ApBetrO)", "items": [{"nr": "2.1", "text": "Offizin: Mindestfläche erfüllt, übersichtlich und sauber"}, {"nr": "2.2", "text": "Labor vorhanden und funktionsfähig ausgestattet"}, {"nr": "2.3", "text": "Nachtdienstzimmer vorhanden (falls Notdienst)"}, {"nr": "2.4", "text": "Sozialraum / Toilette vorhanden"}, {"nr": "2.5", "text": "Kühlschrank: geeicht, Temperaturprotokoll geführt (2–8 °C)"}, {"nr": "2.6", "text": "Tiefkühleinheit vorhanden und protokolliert (falls erforderlich)"}, {"nr": "2.7", "text": "Brandschutz: Feuerlöscher geprüft, Fluchtweg frei"}, {"nr": "2.8", "text": "Sicherheitsschrank für BtM vorhanden, VdS-zugelassen"}, {"nr": "2.9", "text": "Waagen geeicht (Eichschein aktuell)"}, {"nr": "2.10", "text": "Destillieranlage / Autoklav (falls vorhanden): geprüft"}]}, {"title": "3. PERSONAL & FORTBILDUNG (§§ 2–3 ApBetrO)", "items": [{"nr": "3.1", "text": "Approbation aller approbierten Mitarbeiter/innen vorhanden"}, {"nr": "3.2", "text": "Fortbildungsnachweise Apothekenleiter/in: ≥ 60 h / 3 Jahre"}, {"nr": "3.3", "text": "Fortbildungsnachweise PTA und Apotheker/innen aktuell"}, {"nr": "3.4", "text": "Mitarbeiterliste mit Qualifikationen und Arbeitszeiten gepflegt"}, {"nr": "3.5", "text": "Einweisungsnachweise für neue Mitarbeiter/innen vorhanden"}, {"nr": "3.6", "text": "Schulungsnachweise Hygiene, Datenschutz vorhanden"}]}, {"title": "4. BETÄUBUNGSMITTEL (BtMG, BtMVV)", "items": [{"nr": "4.1", "text": "BtM-Kartei / EDV-Buchführung vollständig und aktuell"}, {"nr": "4.2", "text": "Bestandsnachweis: Soll-/Ist-Abgleich dokumentiert"}, {"nr": "4.3", "text": "BtM-Rezepte korrekt geprüft und 3 Jahre aufbewahrt"}, {"nr": "4.4", "text": "BtM-Safe: gesichert, Schlüsselprotokoll vorhanden"}, {"nr": "4.5", "text": "Vernichtungsprotokoll für verfallene BtM vorhanden"}, {"nr": "4.6", "text": "T-Rezepte (Thalidomid etc.) korrekt gehandhabt"}]}, {"title": "5. ARZNEIMITTELSICHERHEIT & LAGERUNG (§ 15 ApBetrO, AMG)", "items": [{"nr": "5.1", "text": "Securpharm-System aktiv und dokumentiert"}, {"nr": "5.2", "text": "Verfallsdaten-Monitoring: System vorhanden und aktuell"}, {"nr": "5.3", "text": "Chargenrückrufe: Prozess dokumentiert, aktueller Rückruf geprüft"}, {"nr": "5.4", "text": "Trennung: frei verkäuflich / verschreibungspflichtig / BtM eingehalten"}, {"nr": "5.5", "text": "Lichtempfindliche Arzneimittel korrekt gelagert"}, {"nr": "5.6", "text": "Ausgangsstoffe: DAB/Ph. Eur.-konform, Prüfzertifikate vorhanden"}, {"nr": "5.7", "text": "Entsorgung: Pharmazeutische Abfälle gemäß Entsorgungsnachweis"}]}, {"title": "6. REZEPTURHERSTELLUNG (§§ 7, 8 ApBetrO)", "items": [{"nr": "6.1", "text": "Herstellungsprotokoll für jede Rezeptur vorhanden"}, {"nr": "6.2", "text": "Qualitätsprüfung: Prüfprotokoll mit Freigabe dokumentiert"}, {"nr": "6.3", "text": "Ausgangsstoff-Prüfzertifikate und Chargenrückverfolgung gesichert"}, {"nr": "6.4", "text": "Defektur: Chargenprotokoll und Stabilitätsdaten vorhanden"}, {"nr": "6.5", "text": "NRF-Vorschriften eingehalten (Kennzeichnung, Haltbarkeit)"}]}, {"title": "7. QUALITÄTSMANAGEMENTSYSTEM (§ 2a ApBetrO)", "items": [{"nr": "7.1", "text": "QMS-Handbuch vorhanden und aktuell"}, {"nr": "7.2", "text": "SOPs für alle kritischen Prozesse erstellt und freigegeben"}, {"nr": "7.3", "text": "Hygieneplan vorhanden und aktuell (Reinigungs-/Desinfektionsplan)"}, {"nr": "7.4", "text": "CIRS (Fehlermeldesystem) implementiert und genutzt"}, {"nr": "7.5", "text": "Interne Selbstinspektion dokumentiert (letzte 12 Monate)"}, {"nr": "7.6", "text": "Reklamationsprotokoll geführt"}]}, {"title": "8. REZEPTBELIEFERUNG & DOKUMENTATION (§§ 17, 22 ApBetrO)", "items": [{"nr": "8.1", "text": "GKV-Rezepte: Retax-sichere Prüfung dokumentiert"}, {"nr": "8.2", "text": "Privatrezepte: Aufbewahrung gemäß § 17 Abs. 6 ApBetrO (3 Jahre)"}, {"nr": "8.3", "text": "Aut-idem-Substitution: Dokumentation und Patienteninfo vorhanden"}, {"nr": "8.4", "text": "Botendienst: Kühlkette und Übergabedokumentation geregelt"}]}, {"title": "9. DATENSCHUTZ & IT (DSGVO, § 5 ApBetrO)", "items": [{"nr": "9.1", "text": "Datenschutzerklärung (Website / Versand) aktuell"}, {"nr": "9.2", "text": "Datenschutzbeauftragter benannt (falls erforderlich)"}, {"nr": "9.3", "text": "EDV-Datensicherung dokumentiert und getestet"}, {"nr": "9.4", "text": "Zugriffsrechte im Apothekensystem geregelt (Rollenkonzept)"}]}, {"title": "10. SONSTIGE UNTERLAGEN & AUSHÄNGE", "items": [{"nr": "10.1", "text": "Preisaushang / Preisliste gemäß AMPreisV aktuell"}, {"nr": "10.2", "text": "Gefahrstoffverzeichnis und Sicherheitsdatenblätter (SDS) vorhanden"}, {"nr": "10.3", "text": "Erste-Hilfe-Ausstattung vorhanden und geprüft"}, {"nr": "10.4", "text": "Hinweis auf Beschwerdestelle und zuständige Behörde ausgehängt"}, {"nr": "10.5", "text": "Notdienstplanung eingereicht / dokumentiert"}, {"nr": "10.6", "text": "Pflichtaushänge (Öffnungszeiten, Notdienst, Inhaber) vollständig"}]}, {"title": "11. APOTHEKENBETRIEB – SONDERTÄTIGKEITEN", "items": [{"nr": "11.1", "text": "AM-Versorgung Heim: Vertrag vorhanden, Protokoll V geführt (§ 12a ApoG)"}, {"nr": "11.2", "text": "Patientenindividuelles Stellen / Verblistern: separater Raum vorhanden (§ 34 Abs. 3 ApBetrO)"}, {"nr": "11.3", "text": "AM-Versorgung Rettungsdienst: Protokoll V geführt (§ 14 ApoG)"}, {"nr": "11.4", "text": "Krankenhausversorgung: Protokoll V vorhanden (§ 14 Abs. 5 ApoG)"}, {"nr": "11.5", "text": "Substitution nach § 5 BtMVV: Protokoll S geführt"}, {"nr": "11.6", "text": "Impfungen: Schulung dokumentiert, Protokoll I vorhanden"}, {"nr": "11.7", "text": "Deckungsvorsorge / Produkthaftpflicht abgeschlossen (§ 94 AMG)"}, {"nr": "11.8", "text": "Standardzulassungen: Anzeige nach § 67 Abs. 5 AMG erfolgt"}, {"nr": "11.9", "text": "Prüfpräparate (§ 13 Abs. 1a Nr. 4 AMG): Erlaubnis bzw. Nachweis vorhanden"}, {"nr": "11.10", "text": "Tätigkeiten im Auftrag: Verantwortungsabgrenzungsvertrag vorhanden (§ 11a Abs. 1 ApBetrO)"}]}, {"title": "12. RÄUME & EINRICHTUNGEN – DETAIL (§ 4 ApBetrO)", "items": [{"nr": "12.1", "text": "Kennzeichnung Fassade / Eingänge ordnungsgemäß"}, {"nr": "12.2", "text": "Aushang dienstbereiter Apotheken vorhanden (§ 23 Abs. 5 ApBetrO)"}, {"nr": "12.3", "text": "Notdienstklappe / Klingel / Wechselsprechanlage funktionsfähig"}, {"nr": "12.4", "text": "Barrierefreier Zugang Offizin geprüft (§ 4 Abs. 2a ApBetrO)"}, {"nr": "12.5", "text": "Vertraulichkeit der Beratung gewährleistet (Sichtschutz / separater Bereich)"}, {"nr": "12.6", "text": "Räumliche Einheit gegeben – kein Raum außerhalb genutzt (§ 4 Abs. 1 Nr. 5 ApBetrO)"}, {"nr": "12.7", "text": "Abtrennung von Gewerberäumen / Verkehrsflächen / Großhandel"}, {"nr": "12.8", "text": "Sichere Anlieferung außerhalb Dienstzeit – Lagertemperatur überwacht (§ 4 Abs. 2d ApBetrO)"}, {"nr": "12.9", "text": "Teerezeptur ordnungsgemäß eingerichtet (§ 4 Abs. 2c ApBetrO)"}]}, {"title": "13. VORRATSHALTUNG & ABGABE – DETAIL (§§ 15–17 ApBetrO)", "items": [{"nr": "13.1", "text": "Keine apothekenpflichtigen AM in der Freiwahl (§ 17 Abs. 3 ApBetrO)"}, {"nr": "13.2", "text": "Keine Kundenzugriffsmöglichkeit zur Sichtwahl (§ 17 Abs. 3 ApBetrO)"}, {"nr": "13.3", "text": "Apothekenübliche Waren in Art und Menge (§§ 1a Abs. 10, 2 Abs. 4 ApBetrO)"}, {"nr": "13.4", "text": "Antidota / Notfallsortiment vollständig (§ 15 Abs. 1 ApBetrO)"}, {"nr": "13.5", "text": "Hinweis auf Notfalldepot vorhanden (§ 15 Abs. 2 ApBetrO)"}, {"nr": "13.6", "text": "Fertigarzneimittelprüfprotokolle: Anzahl ausreichend, Namenszeichen vorhanden (§ 12 ApBetrO)"}, {"nr": "13.7", "text": "Qualitätsmangel AM: LDS informiert (§ 21 Abs. 3 ApBetrO)"}, {"nr": "13.8", "text": "Fälschungsverdacht: gesicherte Lagerung dokumentiert (§ 21 Abs. 5 ApBetrO)"}]}, {"title": "14. DOKUMENTATION SPEZIAL (§§ 17–19 ApBetrO)", "items": [{"nr": "14.1", "text": "Blutprodukte: Charge, Menge, Lieferant dokumentiert (§ 17 Abs. 6a ApBetrO)"}, {"nr": "14.2", "text": "T-Rezepte: Chargennachweis dokumentiert (§ 17 Abs. 6b ApBetrO)"}, {"nr": "14.3", "text": "Import von AM: Charge + Namenszeichen verantwortlicher Apotheker (§ 18 ApBetrO)"}, {"nr": "14.4", "text": "Verschreibungspflichtige AM für Tiere: Erwerb und Abgabe dokumentiert (§ 19 ApBetrO)"}, {"nr": "14.5", "text": "Bezug AM über andere Apotheken (inkl. Filialverbund): Chargennachweis (§ 17 Abs. 6c ApBetrO)"}]}, {"title": "15. WISSENSCHAFTLICHE HILFSMITTEL (§ 5 ApBetrO)", "items": [{"nr": "15.1", "text": "Ph. Eur. aktuell vorhanden (nicht nur online – lokal installiert/verfügbar)"}, {"nr": "15.2", "text": "DAB mit HAB aktuell vorhanden"}, {"nr": "15.3", "text": "Weitere wissenschaftliche Hilfsmittel vorhanden (NRF, Fachinformationen)"}, {"nr": "15.4", "text": "Texte der gesetzlichen Vorschriften aktuell (lokal installiert oder Datenträger)"}]}, {"title": "16. EDV & ELEKTRONISCHE DOKUMENTATION (§ 22 ApBetrO)", "items": [{"nr": "16.1", "text": "Systembeschreibung der eingesetzten Software vorhanden"}, {"nr": "16.2", "text": "Nachträgliche Änderung von Daten erkennbar – Audit Trail vorhanden (§ 22 Abs. 1 ApBetrO)"}, {"nr": "16.3", "text": "Jeder Mitarbeiter mit eigenem Zugangscode – Zugangsdaten nicht weitergegeben"}, {"nr": "16.4", "text": "Schulungsnachweis für EDV-Anwendungen vorhanden"}, {"nr": "16.5", "text": "Datensicherung täglich, Backup-Medien vor Feuer/Wasser/Strahlung geschützt"}, {"nr": "16.6", "text": "Daten während Aufbewahrungsfrist lesbar und abrufbar (§ 22 Abs. 2 ApBetrO)"}, {"nr": "16.7", "text": "Bei Cloud-Nutzung: schriftlicher Vertrag analog § 11a ApBetrO vorhanden"}, {"nr": "16.8", "text": "Notfallplan bei EDV-Ausfall / Internetausfall im QMS festgelegt"}, {"nr": "16.9", "text": "USV (unterbrechungsfreie Stromversorgung) für EDV-Anlage vorhanden"}, {"nr": "16.10", "text": "Bei hybridem System: eindeutige Verknüpfung Ausdruck und elektronisches Dokument"}]}, {"title": "17. PARENTERALIA / ZYTOSTATIKA (§ 35 ApBetrO) – falls zutreffend", "items": [{"nr": "17.1", "text": "QMS umfasst alle Festlegungen gemäß § 35 Abs. 1 ApBetrO"}, {"nr": "17.2", "text": "Herstellung in separatem Reinraum, GMP-gerechte Ausstattung (§ 35 Abs. 3 ApBetrO)"}, {"nr": "17.3", "text": "Reinraumklasse nachgewiesen (Qualifizierung + regelmäßige Requalifizierung)"}, {"nr": "17.4", "text": "RLT-Anlage geeignet: Filterklasse, Druckdifferenzen eingehalten"}, {"nr": "17.5", "text": "Sicherheitswerkbank: Stand der Technik, Wartungsvertrag, DIN 12980 konform"}, {"nr": "17.6", "text": "Partikel-Monitoring-Gerät vorhanden und genutzt (§ 35 Abs. 5 ApBetrO)"}, {"nr": "17.7", "text": "Prozessbegleitendes Monitoring: Partikel- und Keimzahlbestimmungen dokumentiert"}, {"nr": "17.8", "text": "Personalschulung Erstschulung + regelmäßige Folgeschulung dokumentiert"}, {"nr": "17.9", "text": "Schutzkleidung vollständig (Bereichskleidung, Kopfbedeckung, sterile Handschuhe, Maske)"}, {"nr": "17.10", "text": "Arbeitstäglicher Wechsel der Schutzkleidung dokumentiert (§ 35 Abs. 3 ApBetrO)"}, {"nr": "17.11", "text": "Dekontaminationsset für Zytostatika-Unfälle bereitgehalten (TRGS 525)"}, {"nr": "17.12", "text": "Media Fill Validierung durchgeführt (§ 35 Abs. 1 Nr. 4 ApBetrO)"}, {"nr": "17.13", "text": "Simuliertes Produkt am Ende jedes Arbeitstages hergestellt und dokumentiert"}, {"nr": "17.14", "text": "Anbruchsvalidierung durchgeführt, Anbrüche nicht über validierten Zeitraum gelagert"}, {"nr": "17.15", "text": "Bestandsführung Zytostatika: Warenwirtschaftsprogramm und physischer Bestand stimmen überein"}, {"nr": "17.16", "text": "Retouren-Management für Zytostatika dokumentiert"}, {"nr": "17.17", "text": "Ausgangsstoffe (FAM) und Primärpackmittel: Qualitätsprüfung durchgeführt"}, {"nr": "17.18", "text": "Herstellungsprotokoll: alle Pflichtangaben incl. Patientenname, Arztname, Charge"}, {"nr": "17.19", "text": "4-Augen-Prinzip bei Berechnung / Einwaage (oder validiertes elektronisches Verfahren)"}, {"nr": "17.20", "text": "Kühllagerung und bruchsichere Behälter für Transport Zytostatika (TRGS 525)"}]}];
+const STATUSES = ["Offen","In Arbeit","Erledigt","N/A"];
+const S_BORDER = {"Offen":"#c41e3a","In Arbeit":"#c87800","Erledigt":"#036918","N/A":"#6b7a6d"};
+
+let state = {};
+let custom = [];
+let curFilter = "all";
+let toastTimer;
+
+function ls(k,d){ try{const v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch{return d;} }
+function ss(k,v){ try{localStorage.setItem(k,JSON.stringify(v));}catch{} }
+
+function loadAll(){
+  state = ls("ea_st",{});
+  custom = ls("ea_cu",[]);
+}
+function saveAll(){ ss("ea_st",state); ss("ea_cu",custom); }
+
+// ── Build sections ─────────────────────────────────────────────────────────
+function buildUI(){
+  const main = document.getElementById("main");
+  main.innerHTML = "";
+  const sel = document.getElementById("mSec");
+  sel.innerHTML = "";
+  DATA.forEach((sec,si) => {
+    const opt = document.createElement("option");
+    opt.value = si;
+    opt.textContent = sec.title.replace(/\(.*?\)/g,"").trim();
+    sel.appendChild(opt);
+  });
+
+  DATA.forEach((sec,si) => {
+    const allItems = [...sec.items, ...custom.filter(c=>c.si===si)];
+    const block = document.createElement("div");
+    block.className = "section-block";
+    block.id = "sec-"+si;
+
+    // Head
+    const head = document.createElement("div");
+    head.className = "section-head";
+    head.id = "head-"+si;
+    head.innerHTML = `
+      <div class="sec-title" id="sec-title-${si}">
+        <span class="sec-check" id="sec-check-${si}" style="display:none">✓</span>
+        ${sec.title}
+      </div>
+      <div class="sec-meta">
+        <div class="sec-minibar"><div class="sec-minibar-fill" id="mb-${si}" style="width:0%"></div></div>
+        <span class="sec-count" id="sc-${si}">0/${allItems.length}</span>
+        <span class="sec-toggle">▾</span>
+      </div>`;
+    head.addEventListener("click", () => block.classList.toggle("collapsed"));
+
+    // Body
+    const body = document.createElement("div");
+    body.className = "section-body";
+    body.id = "body-"+si;
+
+    // Items
+    allItems.forEach(item => renderItem(body, item, si));
+
+    // Add button
+    const addRow = document.createElement("div");
+    addRow.className = "add-row";
+    addRow.innerHTML = `<button class="add-btn" onclick="openModal(${si})">＋ Prüfpunkt hinzufügen</button>`;
+
+    block.appendChild(head);
+    block.appendChild(body);
+    block.appendChild(addRow);
+    main.appendChild(block);
+  });
+  updateStats();
+  applyFilter(curFilter);
+}
+
+function renderItem(body, item, si){
+  const st = state[item.nr]?.status || "Offen";
+  const meta = state[item.nr];
+  const isCustom = !!item.custom;
+  const div = document.createElement("div");
+  div.className = "check-item";
+  div.id = "item-"+item.nr.replace(/[^a-z0-9]/gi,"_");
+  div.dataset.st = st;
+  div.dataset.si = si;
+  div.dataset.nr = item.nr;
+
+  const textClass = st==="Erledigt"?"done":st==="N/A"?"na":"";
+  const customBadge = isCustom ? `<span class="custom-badge">+ eigener</span>` : "";
+  const metaHtml = meta ? `<div class="item-meta">${meta.who} · ${meta.ts}</div>` : "";
+  const delBtn = isCustom ? `<button class="del-btn" title="Löschen" onclick="delItem('${item.nr}',event)">✕</button>` : "";
+
+  const btnHTML = STATUSES.map(s => {
+    const key = s.replace(" ","");
+    const cls = st===s ? `st-btn active-${key}` : "st-btn";
+    return `<button class="${cls}" data-s="${s}" onclick="setSt('${item.nr}',this)">${s}</button>`;
+  }).join("");
+
+  div.innerHTML = `
+    <span class="item-nr">${item.nr}</span>
+    <div class="item-body">
+      <span class="item-text ${textClass}">${item.text}${customBadge}</span>
+      ${metaHtml}
+    </div>
+    <div class="item-controls">${btnHTML}${delBtn}</div>`;
+  body.appendChild(div);
+}
+
+// ── Set status ─────────────────────────────────────────────────────────────
+function setSt(nr, btn){
+  const who = document.getElementById("userName").value.trim() || "—";
+  const ts = new Date().toLocaleString("de-DE");
+  const st = btn.dataset.s;
+  state[nr] = {status:st,who,ts};
+  saveAll();
+
+  const row = document.getElementById("item-"+nr.replace(/[^a-z0-9]/gi,"_"));
+  row.dataset.st = st;
+
+  // Update text style
+  const txt = row.querySelector(".item-text");
+  txt.className = "item-text" + (st==="Erledigt"?" done":st==="N/A"?" na":"");
+
+  // Update buttons
+  row.querySelectorAll(".st-btn").forEach(b => {
+    const k = b.dataset.s.replace(" ","");
+    b.className = b.dataset.s===st ? `st-btn active-${k}` : "st-btn";
+  });
+
+  // Update meta
+  let metaEl = row.querySelector(".item-meta");
+  if (!metaEl) {
+    metaEl = document.createElement("div");
+    metaEl.className = "item-meta";
+    row.querySelector(".item-body").appendChild(metaEl);
+  }
+  metaEl.textContent = `${who} · ${ts}`;
+
+  if (curFilter!=="all" && st!==curFilter) row.classList.add("hidden-item");
+  else row.classList.remove("hidden-item");
+
+  updateStats();
+  showToast(`${nr} → ${st}`);
+}
+
+// ── Delete custom ──────────────────────────────────────────────────────────
+function delItem(nr, e){
+  e.stopPropagation();
+  if (!confirm("Diesen Prüfpunkt löschen?")) return;
+  custom = custom.filter(c=>c.nr!==nr);
+  delete state[nr];
+  saveAll();
+  const row = document.getElementById("item-"+nr.replace(/[^a-z0-9]/gi,"_"));
+  if (row) row.remove();
+  updateStats();
+}
+
+// ── Stats ──────────────────────────────────────────────────────────────────
+function getAllItems(){
+  const all=[];
+  DATA.forEach((sec,si)=>{
+    sec.items.forEach(it=>all.push({nr:it.nr,si}));
+    custom.filter(c=>c.si===si).forEach(c=>all.push({nr:c.nr,si}));
+  });
+  return all;
+}
+
+function updateStats(){
+  const all = getAllItems();
+  let tot=0,of=0,wa=0,er=0,na=0;
+  const secCnt={};
+  all.forEach(({})=>{}); // reset
+  all.forEach(it=>{
+    tot++;
+    const st=state[it.nr]?.status||"Offen";
+    if(st==="Offen")of++;
+    if(st==="In Arbeit")wa++;
+    if(st==="Erledigt")er++;
+    if(st==="N/A")na++;
+    if(!secCnt[it.si])secCnt[it.si]={done:0,tot:0};
+    secCnt[it.si].tot++;
+    if(st==="Erledigt"||st==="N/A")secCnt[it.si].done++;
+  });
+
+  document.getElementById("st-total").textContent=tot;
+  document.getElementById("st-offen").textContent=of;
+  document.getElementById("st-arbeit").textContent=wa;
+  document.getElementById("st-erledigt").textContent=er;
+  document.getElementById("st-na").textContent=na;
+
+  const pct=tot?Math.round((er+na)/tot*100):0;
+  document.getElementById("pct-label").textContent=pct+" % abgearbeitet";
+  document.getElementById("pct-detail").textContent=er+" erledigt · "+wa+" in Arbeit · "+na+" N/A";
+  document.getElementById("seg-done").style.width=tot?(er/tot*100)+"%":"0%";
+  document.getElementById("seg-arbeit").style.width=tot?(wa/tot*100)+"%":"0%";
+  document.getElementById("seg-na").style.width=tot?(na/tot*100)+"%":"0%";
+
+  document.getElementById("fc-offen").textContent="("+of+")";
+  document.getElementById("fc-arbeit").textContent="("+wa+")";
+  document.getElementById("fc-erl").textContent="("+er+")";
+  document.getElementById("fc-na").textContent="("+na+")";
+
+  // Section badges
+  Object.entries(secCnt).forEach(([si,c])=>{
+    const mb=document.getElementById("mb-"+si);
+    const sc=document.getElementById("sc-"+si);
+    const ck=document.getElementById("sec-check-"+si);
+    const tt=document.getElementById("sec-title-"+si);
+    const hd=document.getElementById("head-"+si);
+    // recalculate total including custom
+    const secTotal = DATA[si].items.length + custom.filter(x=>x.si==si).length;
+    if(mb) mb.style.width=(secTotal?(c.done/secTotal*100):0)+"%";
+    if(sc) sc.textContent=c.done+"/"+secTotal;
+    const allDone = c.done===secTotal && secTotal>0;
+    if(ck) ck.style.display=allDone?"inline":"none";
+    if(tt) tt.className="sec-title"+(allDone?" done-title":"");
+    if(hd) hd.className="section-head"+(allDone?" all-done":"");
+  });
+}
+
+// ── Filter ──────────────────────────────────────────────────────────────────
+function applyFilter(f){
+  curFilter=f;
+  document.querySelectorAll(".filter-btn").forEach(b=>b.classList.toggle("active",b.dataset.f===f));
+  document.querySelectorAll(".check-item").forEach(row=>{
+    const st=row.dataset.st;
+    row.classList.toggle("hidden-item",f!=="all"&&st!==f);
+  });
+  document.querySelectorAll(".section-block").forEach(block=>{
+    const vis=block.querySelectorAll(".check-item:not(.hidden-item)").length;
+    block.style.display=(vis===0&&f!=="all")?"none":"";
+  });
+}
+document.querySelectorAll(".filter-btn").forEach(b=>b.addEventListener("click",()=>applyFilter(b.dataset.f)));
+document.head.insertAdjacentHTML("beforeend","<style>.hidden-item{display:none!important}</style>");
+
+// ── Modal ──────────────────────────────────────────────────────────────────
+let activeSi=0;
+function openModal(si){
+  activeSi=si;
+  document.getElementById("mSec").value=si;
+  document.getElementById("mText").value="";
+  document.getElementById("mNr").value="";
+  document.getElementById("modalSub").textContent=DATA[si].title.replace(/\(.*?\)/g,"").trim();
+  document.getElementById("modalOverlay").classList.add("open");
+  setTimeout(()=>document.getElementById("mText").focus(),100);
+}
+function closeModal(){ document.getElementById("modalOverlay").classList.remove("open"); }
+document.getElementById("modalOverlay").addEventListener("click",function(e){if(e.target===this)closeModal();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal();});
+document.getElementById("mSec").addEventListener("change",function(){
+  activeSi=parseInt(this.value);
+  document.getElementById("modalSub").textContent=DATA[activeSi].title.replace(/\(.*?\)/g,"").trim();
+});
+
+function saveItem(){
+  const text=document.getElementById("mText").value.trim();
+  if(!text){document.getElementById("mText").focus();return;}
+  const who=document.getElementById("userName").value.trim()||"—";
+  const ts=new Date().toLocaleString("de-DE");
+  let nr=document.getElementById("mNr").value.trim()||("K"+(activeSi+1)+"."+(custom.filter(c=>c.si===activeSi).length+1));
+  const item={id:Date.now(),si:activeSi,nr,text,custom:true,who,ts};
+  custom.push(item);
+  state[nr]={status:"Offen",who,ts};
+  saveAll();
+  const body=document.getElementById("body-"+activeSi);
+  if(body) renderItem(body,item,activeSi);
+  updateStats();
+  showToast("Hinzugefügt: "+nr);
+  closeModal();
+}
+
+// ── User ──────────────────────────────────────────────────────────────────
+const uIn=document.getElementById("userName");
+const uCk=document.getElementById("userCheck");
+uIn.addEventListener("input",()=>{
+  const v=uIn.value.trim();
+  uCk.style.display=v?"inline":"none";
+  ss("ea_user",v);
+});
+const savedUser=ls("ea_user","");
+if(savedUser){uIn.value=savedUser;uCk.style.display="inline";}
+
+// ── Toast ─────────────────────────────────────────────────────────────────
+function showToast(msg){
+  const t=document.getElementById("toast");
+  t.textContent="✓ "+msg;
+  t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove("show"),2800);
+}
+
+// ── Export ────────────────────────────────────────────────────────────────
+function exportCSV(){
+  const rows=["\uFEFFNr.;Prüfpunkt;Eigener Punkt;Status;Bearbeiter;Zeitstempel"];
+  DATA.forEach(sec=>sec.items.forEach(it=>{
+    const st=state[it.nr]||{status:"Offen",who:"",ts:""};
+    rows.push(`${it.nr};${it.text.replace(/;/g,",")};Nein;${st.status};${st.who};${st.ts}`);
+  }));
+  custom.forEach(c=>{
+    const st=state[c.nr]||{status:"Offen",who:"",ts:""};
+    rows.push(`${c.nr};${c.text.replace(/;/g,",")};Ja (${c.who});${st.status};${st.who};${st.ts}`);
+  });
+  const blob=new Blob([rows.join("\n")],{type:"text/csv;charset=utf-8;"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);
+  a.download="Apotheke_Checkliste_Export.csv";a.click();
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────
+loadAll();
+buildUI();
+</script>
+</body>
+</html>
