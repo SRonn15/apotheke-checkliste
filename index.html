@@ -133,6 +133,18 @@ footer p{font-size:12px;color:rgba(255,255,255,0.9)}
   .stat-cell{min-width:33%}
   .item-controls{flex-wrap:wrap;gap:3px}
 }
+
+  /* ── SYNC ── */
+  .sync-bar{background:#f0f4f0;border-bottom:1px solid #dde5de;padding:6px 24px;display:flex;align-items:center;gap:12px;font-size:12px;color:#555}
+  .sync-status{display:flex;align-items:center;gap:6px}
+  .sync-dot{width:8px;height:8px;border-radius:50%;background:#ccc;flex-shrink:0;transition:background .3s}
+  .sync-dot.ok{background:#036918}
+  .sync-dot.saving{background:#c87800;animation:pulse .8s infinite}
+  .sync-dot.error{background:#c41e3a}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  .token-wrap{display:flex;align-items:center;gap:8px;margin-left:auto}
+  .token-wrap label{font-size:11px;color:#888;white-space:nowrap}
+  .token-wrap input{border:1px solid #dde5de;border-radius:3px;padding:3px 8px;font-size:11px;font-family:monospace;color:#555;width:220px;background:#fff;outline:none}
 </style>
 </head>
 <body>
@@ -145,6 +157,18 @@ footer p{font-size:12px;color:rgba(255,255,255,0.9)}
   <input type="text" id="userName" placeholder="Namen eingeben …" autocomplete="off">
   <span class="user-check" id="userCheck" style="display:none">✓</span>
   <span style="margin-left:20px;font-size:14px;color:#888">Kontrollvorbereitung · Engelsdorfer Apotheke · ApBetrO 2024</span>
+</div>
+
+<!-- SYNC BAR -->
+<div class="sync-bar">
+  <div class="sync-status">
+    <div class="sync-dot" id="syncDot"></div>
+    <span id="syncMsg">Nicht verbunden – Token eingeben</span>
+  </div>
+  <div class="token-wrap">
+    <label for="ghToken">GitHub Token:</label>
+    <input type="password" id="ghToken" placeholder="ghp_..." autocomplete="off">
+  </div>
 </div>
 
 <!-- STATS -->
@@ -210,7 +234,7 @@ footer p{font-size:12px;color:rgba(255,255,255,0.9)}
 <div class="toast" id="toast"></div>
 
 <footer>
-  <p>Ende der Checkliste</p>
+  <p>Engelsdorfer Apotheke · Werkstättenstr. 6, 04319 Leipzig · Tel. 0341 651 3191</p>
 </footer>
 
 <script>
@@ -521,9 +545,121 @@ function exportCSV(){
   a.download="Apotheke_Checkliste_Export.csv";a.click();
 }
 
+// ── GitHub Sync ───────────────────────────────────────────────────────────
+const REPO  = "SRonn15/apotheke-checkliste";
+const FILE  = "data.json";
+let syncTimer = null;
+let isSyncing = false;
+let lastSha   = null;
+
+function getToken() {
+  return document.getElementById("ghToken").value.trim() ||
+         ls("ea_ghtoken", "");
+}
+
+function setSyncStatus(status, msg) {
+  const dot = document.getElementById("syncDot");
+  const txt = document.getElementById("syncMsg");
+  dot.className = "sync-dot " + status;
+  txt.textContent = msg;
+}
+
+async function loadFromGitHub() {
+  const token = getToken();
+  if (!token) { setSyncStatus("", "Kein Token – nur lokaler Speicher"); return; }
+  setSyncStatus("saving", "Lade Daten …");
+  try {
+    const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE}`, {
+      headers: { "Authorization": "token " + token, "Accept": "application/vnd.github.v3+json" }
+    });
+    if (r.status === 404) {
+      setSyncStatus("ok", "Bereit – noch keine Cloud-Daten");
+      return;
+    }
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    const d = await r.json();
+    lastSha = d.sha;
+    const content = JSON.parse(atob(d.content.replace(/\n/g, "")));
+    // Merge: cloud wins for any key present in cloud
+    Object.assign(state, content.state || {});
+    custom = content.custom || custom;
+    saveAll();
+    buildUI();
+    setSyncStatus("ok", "Synchronisiert · " + new Date().toLocaleTimeString("de-DE"));
+  } catch(e) {
+    setSyncStatus("error", "Fehler: " + e.message);
+  }
+}
+
+async function saveToGitHub() {
+  const token = getToken();
+  if (!token || isSyncing) return;
+  isSyncing = true;
+  setSyncStatus("saving", "Speichere …");
+  try {
+    // Get current SHA first
+    const getR = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE}`, {
+      headers: { "Authorization": "token " + token, "Accept": "application/vnd.github.v3+json" }
+    });
+    if (getR.ok) { const gd = await getR.json(); lastSha = gd.sha; }
+
+    const payload = { state, custom };
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
+    const body = { message: "Sync " + new Date().toISOString(), content };
+    if (lastSha) body.sha = lastSha;
+
+    const putR = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE}`, {
+      method: "PUT",
+      headers: {
+        "Authorization": "token " + token,
+        "Accept": "application/vnd.github.v3+json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(body)
+    });
+    if (!putR.ok) throw new Error("HTTP " + putR.status);
+    const pd = await putR.json();
+    lastSha = pd.content.sha;
+    setSyncStatus("ok", "Gespeichert · " + new Date().toLocaleTimeString("de-DE"));
+  } catch(e) {
+    setSyncStatus("error", "Fehler beim Speichern: " + e.message);
+  } finally {
+    isSyncing = false;
+  }
+}
+
+function scheduleSave() {
+  clearTimeout(syncTimer);
+  syncTimer = setTimeout(saveToGitHub, 2000);
+}
+
+// Patch saveAll to also trigger GitHub sync
+const _origSaveAll = saveAll;
+function saveAll() {
+  _origSaveAll();
+  scheduleSave();
+}
+
+// Token input handler
+document.getElementById("ghToken").addEventListener("input", function() {
+  const v = this.value.trim();
+  if (v) {
+    ss("ea_ghtoken", v);
+    loadFromGitHub();
+  }
+});
+
+// Pre-fill token if saved
+const savedToken = ls("ea_ghtoken", "");
+if (savedToken) {
+  document.getElementById("ghToken").value = savedToken;
+}
+
 // ── Init ──────────────────────────────────────────────────────────────────
 loadAll();
 buildUI();
+if (getToken()) loadFromGitHub();
+
 </script>
 </body>
 </html>
