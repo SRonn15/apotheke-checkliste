@@ -3,22 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kontrollvorbereitung â Engelsdorfer Apotheke</title>
+<title>Kontrollvorbereitung – Engelsdorfer Apotheke</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Roboto',Arial,sans-serif;background:#fff;color:#1f1f1f;font-size:16px}
 
-/* ââ HEADER ââ */
+/* ── HEADER ── */
 /* header removed */
 
-/* ââ GREEN BAND ââ */
+/* ── GREEN BAND ── */
 .user-wrap{display:flex;align-items:center;gap:10px;padding:14px 24px;background:#f5f7f5;border-bottom:1px solid #dde5de;flex-wrap:wrap}
 .user-wrap label{font-size:14px;color:#555;white-space:nowrap;font-weight:500}
 .user-wrap input{border:1.5px solid #dde5de;border-radius:4px;padding:8px 14px;font-size:15px;font-family:inherit;color:#1f1f1f;outline:none;width:240px;background:#fff}
 .user-check{font-size:16px;font-weight:700;color:#036918}
 
-/* ââ STATS ââ */
+/* ── STATS ── */
 .stats-bar{background:#f5f7f5;border-bottom:1px solid #dde5de;max-width:1000px;margin:0 auto}
 .stats-inner{display:flex;border-left:1px solid #dde5de}
 .stat-cell{flex:1;text-align:center;padding:14px 8px;border-right:1px solid #dde5de}
@@ -30,7 +30,7 @@ body{font-family:'Roboto',Arial,sans-serif;background:#fff;color:#1f1f1f;font-si
 .stat-num.na{color:#6b7a6d}
 .stat-label{font-size:10px;color:#888;text-transform:uppercase;letter-spacing:0.1em;margin-top:3px}
 
-/* ââ PROGRESS ââ */
+/* ── PROGRESS ── */
 .progress-wrap{max-width:1000px;margin:0 auto;background:#f5f7f5;padding:6px 16px 14px;border-bottom:1px solid #dde5de}
 .progress-meta{display:flex;justify-content:space-between;font-size:11px;color:#888;margin-bottom:5px}
 .progress-track{height:8px;background:#dde5de;border-radius:99px;overflow:hidden;display:flex}
@@ -38,7 +38,7 @@ body{font-family:'Roboto',Arial,sans-serif;background:#fff;color:#1f1f1f;font-si
 .seg-arbeit{background:#c87800;height:100%;transition:width .4s}
 .seg-na{background:#6b7a6d;height:100%;transition:width .4s}
 
-/* ââ FILTER ââ */
+/* ── FILTER ── */
 .filter-bar{background:#fff;border-bottom:1px solid #dde5de;padding:10px 24px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;position:sticky;top:0;z-index:90;box-shadow:0 2px 4px rgba(0,0,0,0.05)}
 .filter-label{font-size:10px;color:#888;text-transform:uppercase;letter-spacing:0.1em;margin-right:4px}
 .filter-btn{border:1.5px solid #dde5de;background:transparent;border-radius:3px;padding:5px 13px;font-size:12px;font-family:inherit;cursor:pointer;color:#555;display:flex;align-items:center;gap:5px;transition:all .15s}
@@ -46,10 +46,10 @@ body{font-family:'Roboto',Arial,sans-serif;background:#fff;color:#1f1f1f;font-si
 .filter-btn.active{background:#036918;border-color:#036918;color:#fff;font-weight:600}
 .filter-dot{width:8px;height:8px;border-radius:50%;display:inline-block}
 
-/* ââ MAIN ââ */
+/* ── MAIN ── */
 .main{max-width:1000px;margin:0 auto;padding:20px 24px 100px}
 
-/* ââ SECTION ââ */
+/* ── SECTION ── */
 .section-block{margin-bottom:14px;border:1px solid #dde5de;border-radius:5px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.05)}
 .section-head{background:#f0f4f0;border-bottom:1px solid #dde5de;padding:11px 16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none;transition:background .15s}
 .section-head:hover{background:#e8f2ea}
@@ -66,7 +66,7 @@ body{font-family:'Roboto',Arial,sans-serif;background:#fff;color:#1f1f1f;font-si
 .section-body{display:block}
 .collapsed .section-body{display:none}
 
-/* ââ ITEM ââ */
+/* ── ITEM ── */
 .check-item{display:flex;align-items:flex-start;border-bottom:1px solid #eef1ee;transition:background .12s}
 .check-item:last-child{border-bottom:none}
 .check-item:hover{background:#fafbfa}
@@ -91,12 +91,12 @@ body{font-family:'Roboto',Arial,sans-serif;background:#fff;color:#1f1f1f;font-si
 .del-btn{border:none;background:transparent;color:#dde5de;cursor:pointer;font-size:13px;padding:2px 5px;border-radius:3px;transition:color .15s;margin-left:2px}
 .del-btn:hover{color:#c41e3a}
 
-/* ââ ADD ROW ââ */
+/* ── ADD ROW ── */
 .add-row{background:#f5f7f5;border-top:1px dashed #dde5de;padding:8px 16px}
 .add-btn{background:transparent;border:1.5px dashed #ccc;border-radius:3px;padding:5px 14px;font-size:12px;font-family:inherit;color:#888;cursor:pointer;transition:all .15s}
 .add-btn:hover{border-color:#036918;color:#036918}
 
-/* ââ MODAL ââ */
+/* ── MODAL ── */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:500;display:none;align-items:center;justify-content:center}
 .modal-overlay.open{display:flex}
 .modal{background:#fff;border-radius:5px;width:min(480px,92vw);box-shadow:0 12px 40px rgba(0,0,0,0.2);overflow:hidden}
@@ -114,15 +114,15 @@ body{font-family:'Roboto',Arial,sans-serif;background:#fff;color:#1f1f1f;font-si
 .btn-save{background:#036918;border:none;border-radius:4px;padding:8px 22px;font-family:inherit;font-size:13px;font-weight:700;color:#fff;cursor:pointer}
 .btn-save:hover{background:#025514}
 
-/* ââ EXPORT ââ */
+/* ── EXPORT ── */
 .export-btn{position:fixed;bottom:20px;left:20px;background:#036918;border:none;border-radius:99px;padding:10px 22px;font-family:inherit;font-size:13px;font-weight:700;color:#fff;cursor:pointer;box-shadow:0 4px 14px rgba(3,105,24,0.35);transition:all .2s;z-index:200}
 .export-btn:hover{background:#025514;transform:translateY(-1px)}
 
-/* ââ TOAST ââ */
+/* ── TOAST ── */
 .toast{position:fixed;bottom:20px;right:20px;background:#036918;color:#fff;padding:10px 16px;border-radius:4px;font-size:13px;font-weight:500;box-shadow:0 4px 16px rgba(3,105,24,0.35);z-index:300;opacity:0;transform:translateY(8px);transition:all .25s;pointer-events:none}
 .toast.show{opacity:1;transform:translateY(0)}
 
-/* ââ FOOTER ââ */
+/* ── FOOTER ── */
 footer{background:#8dbd97;padding:14px 24px;text-align:center}
 footer p{font-size:12px;color:rgba(255,255,255,0.9)}
 
@@ -134,17 +134,25 @@ footer p{font-size:12px;color:rgba(255,255,255,0.9)}
   .item-controls{flex-wrap:wrap;gap:3px}
 }
 
-  /* ââ SYNC ââ */
-  .sync-bar{background:#f0f4f0;border-bottom:1px solid #dde5de;padding:6px 24px;display:flex;align-items:center;gap:12px;font-size:12px;color:#555}
-  .sync-status{display:flex;align-items:center;gap:6px}
-  .sync-dot{width:8px;height:8px;border-radius:50%;background:#ccc;flex-shrink:0;transition:background .3s}
+  /* ── SYNC ── */
+  .sync-bar{background:#f0f4f0;border-bottom:1px solid #dde5de;padding:7px 24px;display:flex;align-items:center;gap:12px;font-size:13px;color:#555;flex-wrap:wrap}
+  .sync-dot{width:9px;height:9px;border-radius:50%;background:#ccc;flex-shrink:0;transition:background .3s;display:inline-block}
   .sync-dot.ok{background:#036918}
   .sync-dot.saving{background:#c87800;animation:pulse .8s infinite}
   .sync-dot.error{background:#c41e3a}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
   .token-wrap{display:flex;align-items:center;gap:8px;margin-left:auto}
-  .token-wrap label{font-size:11px;color:#888;white-space:nowrap}
-  .token-wrap input{border:1px solid #dde5de;border-radius:3px;padding:3px 8px;font-size:11px;font-family:monospace;color:#555;width:220px;background:#fff;outline:none}
+  .token-wrap label{font-size:12px;color:#888;white-space:nowrap}
+  .token-wrap input{border:1px solid #dde5de;border-radius:3px;padding:4px 10px;font-size:12px;font-family:monospace;color:#555;width:240px;background:#fff;outline:none}
+
+  /* ── NAME REQUIRED ── */
+  .name-required-hint{display:none;font-size:12px;color:#c41e3a;margin-left:10px;font-weight:500}
+  .name-required-hint.show{display:inline}
+  .user-wrap input.missing{border-color:#c41e3a !important;background:#fff8f8}
+
+  /* ── WHO LABEL ── */
+  .item-who{font-size:11px;color:#888;white-space:nowrap;padding-left:8px;align-self:center;min-width:80px}
+  .item-who.has-name{color:#555;font-weight:500}
 </style>
 </head>
 <body>
@@ -154,20 +162,18 @@ footer p{font-size:12px;color:rgba(255,255,255,0.9)}
 <!-- GREEN BAND -->
 <div class="user-wrap">
   <label for="userName">Bearbeiter/in:</label>
-  <input type="text" id="userName" placeholder="Namen eingeben â¦" autocomplete="off">
-  <span class="user-check" id="userCheck" style="display:none">â</span>
+  <input type="text" id="userName" placeholder="Namen eingeben …" autocomplete="off">
+  <span class="user-check" id="userCheck" style="display:none">✓</span>
+  <span class="name-required-hint" id="nameHint">⚠ Bitte zuerst Namen eingeben</span>
   <span style="margin-left:20px;font-size:14px;color:#888">Kontrollvorbereitung · Engelsdorfer Apotheke · ApBetrO 2024</span>
 </div>
-
 <!-- SYNC BAR -->
 <div class="sync-bar">
-  <div class="sync-status">
-    <div class="sync-dot" id="syncDot"></div>
-    <span id="syncMsg">Nicht verbunden â Token eingeben</span>
-  </div>
+  <span class="sync-dot" id="syncDot"></span>
+  <span id="syncMsg">Token eingeben für Sync</span>
   <div class="token-wrap">
     <label for="ghToken">GitHub Token:</label>
-    <input type="password" id="ghToken" placeholder="ghp_..." autocomplete="off">
+    <input type="password" id="ghToken" placeholder="ghp_..." autocomplete="off" spellcheck="false">
   </div>
 </div>
 
@@ -213,11 +219,11 @@ footer p{font-size:12px;color:rgba(255,255,255,0.9)}
   <div class="modal">
     <div class="modal-head">
       <div class="modal-head-title">Prüfpunkt hinzufügen</div>
-      <div class="modal-head-sub" id="modalSub">â</div>
+      <div class="modal-head-sub" id="modalSub">–</div>
     </div>
     <div class="modal-body">
       <label>Prüfpunkt *</label>
-      <textarea id="mText" placeholder="Beschreibung des Prüfpunkts â¦"></textarea>
+      <textarea id="mText" placeholder="Beschreibung des Prüfpunkts …"></textarea>
       <label>Abschnitt</label>
       <select id="mSec"></select>
       <label>Nummer (optional)</label>
@@ -230,7 +236,7 @@ footer p{font-size:12px;color:rgba(255,255,255,0.9)}
   </div>
 </div>
 
-<button class="export-btn" onclick="exportCSV()">â¬ Export CSV</button>
+<button class="export-btn" onclick="exportCSV()">⬇ Export CSV</button>
 <div class="toast" id="toast"></div>
 
 <footer>
@@ -238,7 +244,7 @@ footer p{font-size:12px;color:rgba(255,255,255,0.9)}
 </footer>
 
 <script>
-const DATA = [{"title": "1. BETRIEBSERLAUBNIS & ZULASSUNGEN", "items": [{"nr": "1.1", "text": "Betriebserlaubnis (§ 1 ApoG) vorhanden und aktuell"}, {"nr": "1.2", "text": "Apothekenleiter-Bestallungsurkunde / Approbationsurkunde liegt vor"}, {"nr": "1.3", "text": "Stellvertretungsregelung dokumentiert (§ 2 Abs. 6 ApoG)"}, {"nr": "1.4", "text": "Filialapotheken: eigene Betriebserlaubnisse vorhanden (falls zutreffend)"}, {"nr": "1.5", "text": "Versandhandelserlaubnis aktuell (falls zutreffend, § 11a ApoG)"}, {"nr": "1.6", "text": "EU-Sicherheitslogo sichtbar auf Website (Versand)"}]}, {"title": "2. RÃUMLICHKEITEN & AUSSTATTUNG (§§ 4â8 ApBetrO)", "items": [{"nr": "2.1", "text": "Offizin: Mindestfläche erfüllt, übersichtlich und sauber"}, {"nr": "2.2", "text": "Labor vorhanden und funktionsfähig ausgestattet"}, {"nr": "2.3", "text": "Nachtdienstzimmer vorhanden (falls Notdienst)"}, {"nr": "2.4", "text": "Sozialraum / Toilette vorhanden"}, {"nr": "2.5", "text": "Kühlschrank: geeicht, Temperaturprotokoll geführt (2â8 °C)"}, {"nr": "2.6", "text": "Tiefkühleinheit vorhanden und protokolliert (falls erforderlich)"}, {"nr": "2.7", "text": "Brandschutz: Feuerlöscher geprüft, Fluchtweg frei"}, {"nr": "2.8", "text": "Sicherheitsschrank für BtM vorhanden, VdS-zugelassen"}, {"nr": "2.9", "text": "Waagen geeicht (Eichschein aktuell)"}, {"nr": "2.10", "text": "Destillieranlage / Autoklav (falls vorhanden): geprüft"}]}, {"title": "3. PERSONAL & FORTBILDUNG (§§ 2â3 ApBetrO)", "items": [{"nr": "3.1", "text": "Approbation aller approbierten Mitarbeiter/innen vorhanden"}, {"nr": "3.2", "text": "Fortbildungsnachweise Apothekenleiter/in: â¥ 60 h / 3 Jahre"}, {"nr": "3.3", "text": "Fortbildungsnachweise PTA und Apotheker/innen aktuell"}, {"nr": "3.4", "text": "Mitarbeiterliste mit Qualifikationen und Arbeitszeiten gepflegt"}, {"nr": "3.5", "text": "Einweisungsnachweise für neue Mitarbeiter/innen vorhanden"}, {"nr": "3.6", "text": "Schulungsnachweise Hygiene, Datenschutz vorhanden"}]}, {"title": "4. BETÃUBUNGSMITTEL (BtMG, BtMVV)", "items": [{"nr": "4.1", "text": "BtM-Kartei / EDV-Buchführung vollständig und aktuell"}, {"nr": "4.2", "text": "Bestandsnachweis: Soll-/Ist-Abgleich dokumentiert"}, {"nr": "4.3", "text": "BtM-Rezepte korrekt geprüft und 3 Jahre aufbewahrt"}, {"nr": "4.4", "text": "BtM-Safe: gesichert, Schlüsselprotokoll vorhanden"}, {"nr": "4.5", "text": "Vernichtungsprotokoll für verfallene BtM vorhanden"}, {"nr": "4.6", "text": "T-Rezepte (Thalidomid etc.) korrekt gehandhabt"}]}, {"title": "5. ARZNEIMITTELSICHERHEIT & LAGERUNG (§ 15 ApBetrO, AMG)", "items": [{"nr": "5.1", "text": "Securpharm-System aktiv und dokumentiert"}, {"nr": "5.2", "text": "Verfallsdaten-Monitoring: System vorhanden und aktuell"}, {"nr": "5.3", "text": "Chargenrückrufe: Prozess dokumentiert, aktueller Rückruf geprüft"}, {"nr": "5.4", "text": "Trennung: frei verkäuflich / verschreibungspflichtig / BtM eingehalten"}, {"nr": "5.5", "text": "Lichtempfindliche Arzneimittel korrekt gelagert"}, {"nr": "5.6", "text": "Ausgangsstoffe: DAB/Ph. Eur.-konform, Prüfzertifikate vorhanden"}, {"nr": "5.7", "text": "Entsorgung: Pharmazeutische Abfälle gemäÃ Entsorgungsnachweis"}]}, {"title": "6. REZEPTURHERSTELLUNG (§§ 7, 8 ApBetrO)", "items": [{"nr": "6.1", "text": "Herstellungsprotokoll für jede Rezeptur vorhanden"}, {"nr": "6.2", "text": "Qualitätsprüfung: Prüfprotokoll mit Freigabe dokumentiert"}, {"nr": "6.3", "text": "Ausgangsstoff-Prüfzertifikate und Chargenrückverfolgung gesichert"}, {"nr": "6.4", "text": "Defektur: Chargenprotokoll und Stabilitätsdaten vorhanden"}, {"nr": "6.5", "text": "NRF-Vorschriften eingehalten (Kennzeichnung, Haltbarkeit)"}]}, {"title": "7. QUALITÃTSMANAGEMENTSYSTEM (§ 2a ApBetrO)", "items": [{"nr": "7.1", "text": "QMS-Handbuch vorhanden und aktuell"}, {"nr": "7.2", "text": "SOPs für alle kritischen Prozesse erstellt und freigegeben"}, {"nr": "7.3", "text": "Hygieneplan vorhanden und aktuell (Reinigungs-/Desinfektionsplan)"}, {"nr": "7.4", "text": "CIRS (Fehlermeldesystem) implementiert und genutzt"}, {"nr": "7.5", "text": "Interne Selbstinspektion dokumentiert (letzte 12 Monate)"}, {"nr": "7.6", "text": "Reklamationsprotokoll geführt"}]}, {"title": "8. REZEPTBELIEFERUNG & DOKUMENTATION (§§ 17, 22 ApBetrO)", "items": [{"nr": "8.1", "text": "GKV-Rezepte: Retax-sichere Prüfung dokumentiert"}, {"nr": "8.2", "text": "Privatrezepte: Aufbewahrung gemäÃ § 17 Abs. 6 ApBetrO (3 Jahre)"}, {"nr": "8.3", "text": "Aut-idem-Substitution: Dokumentation und Patienteninfo vorhanden"}, {"nr": "8.4", "text": "Botendienst: Kühlkette und Ãbergabedokumentation geregelt"}]}, {"title": "9. DATENSCHUTZ & IT (DSGVO, § 5 ApBetrO)", "items": [{"nr": "9.1", "text": "Datenschutzerklärung (Website / Versand) aktuell"}, {"nr": "9.2", "text": "Datenschutzbeauftragter benannt (falls erforderlich)"}, {"nr": "9.3", "text": "EDV-Datensicherung dokumentiert und getestet"}, {"nr": "9.4", "text": "Zugriffsrechte im Apothekensystem geregelt (Rollenkonzept)"}]}, {"title": "10. SONSTIGE UNTERLAGEN & AUSHÃNGE", "items": [{"nr": "10.1", "text": "Preisaushang / Preisliste gemäÃ AMPreisV aktuell"}, {"nr": "10.2", "text": "Gefahrstoffverzeichnis und Sicherheitsdatenblätter (SDS) vorhanden"}, {"nr": "10.3", "text": "Erste-Hilfe-Ausstattung vorhanden und geprüft"}, {"nr": "10.4", "text": "Hinweis auf Beschwerdestelle und zuständige Behörde ausgehängt"}, {"nr": "10.5", "text": "Notdienstplanung eingereicht / dokumentiert"}, {"nr": "10.6", "text": "Pflichtaushänge (Ãffnungszeiten, Notdienst, Inhaber) vollständig"}]}, {"title": "11. APOTHEKENBETRIEB â SONDERTÃTIGKEITEN", "items": [{"nr": "11.1", "text": "AM-Versorgung Heim: Vertrag vorhanden, Protokoll V geführt (§ 12a ApoG)"}, {"nr": "11.2", "text": "Patientenindividuelles Stellen / Verblistern: separater Raum vorhanden (§ 34 Abs. 3 ApBetrO)"}, {"nr": "11.3", "text": "AM-Versorgung Rettungsdienst: Protokoll V geführt (§ 14 ApoG)"}, {"nr": "11.4", "text": "Krankenhausversorgung: Protokoll V vorhanden (§ 14 Abs. 5 ApoG)"}, {"nr": "11.5", "text": "Substitution nach § 5 BtMVV: Protokoll S geführt"}, {"nr": "11.6", "text": "Impfungen: Schulung dokumentiert, Protokoll I vorhanden"}, {"nr": "11.7", "text": "Deckungsvorsorge / Produkthaftpflicht abgeschlossen (§ 94 AMG)"}, {"nr": "11.8", "text": "Standardzulassungen: Anzeige nach § 67 Abs. 5 AMG erfolgt"}, {"nr": "11.9", "text": "Prüfpräparate (§ 13 Abs. 1a Nr. 4 AMG): Erlaubnis bzw. Nachweis vorhanden"}, {"nr": "11.10", "text": "Tätigkeiten im Auftrag: Verantwortungsabgrenzungsvertrag vorhanden (§ 11a Abs. 1 ApBetrO)"}]}, {"title": "12. RÃUME & EINRICHTUNGEN â DETAIL (§ 4 ApBetrO)", "items": [{"nr": "12.1", "text": "Kennzeichnung Fassade / Eingänge ordnungsgemäÃ"}, {"nr": "12.2", "text": "Aushang dienstbereiter Apotheken vorhanden (§ 23 Abs. 5 ApBetrO)"}, {"nr": "12.3", "text": "Notdienstklappe / Klingel / Wechselsprechanlage funktionsfähig"}, {"nr": "12.4", "text": "Barrierefreier Zugang Offizin geprüft (§ 4 Abs. 2a ApBetrO)"}, {"nr": "12.5", "text": "Vertraulichkeit der Beratung gewährleistet (Sichtschutz / separater Bereich)"}, {"nr": "12.6", "text": "Räumliche Einheit gegeben â kein Raum auÃerhalb genutzt (§ 4 Abs. 1 Nr. 5 ApBetrO)"}, {"nr": "12.7", "text": "Abtrennung von Gewerberäumen / Verkehrsflächen / GroÃhandel"}, {"nr": "12.8", "text": "Sichere Anlieferung auÃerhalb Dienstzeit â Lagertemperatur überwacht (§ 4 Abs. 2d ApBetrO)"}, {"nr": "12.9", "text": "Teerezeptur ordnungsgemäÃ eingerichtet (§ 4 Abs. 2c ApBetrO)"}]}, {"title": "13. VORRATSHALTUNG & ABGABE â DETAIL (§§ 15â17 ApBetrO)", "items": [{"nr": "13.1", "text": "Keine apothekenpflichtigen AM in der Freiwahl (§ 17 Abs. 3 ApBetrO)"}, {"nr": "13.2", "text": "Keine Kundenzugriffsmöglichkeit zur Sichtwahl (§ 17 Abs. 3 ApBetrO)"}, {"nr": "13.3", "text": "Apothekenübliche Waren in Art und Menge (§§ 1a Abs. 10, 2 Abs. 4 ApBetrO)"}, {"nr": "13.4", "text": "Antidota / Notfallsortiment vollständig (§ 15 Abs. 1 ApBetrO)"}, {"nr": "13.5", "text": "Hinweis auf Notfalldepot vorhanden (§ 15 Abs. 2 ApBetrO)"}, {"nr": "13.6", "text": "Fertigarzneimittelprüfprotokolle: Anzahl ausreichend, Namenszeichen vorhanden (§ 12 ApBetrO)"}, {"nr": "13.7", "text": "Qualitätsmangel AM: LDS informiert (§ 21 Abs. 3 ApBetrO)"}, {"nr": "13.8", "text": "Fälschungsverdacht: gesicherte Lagerung dokumentiert (§ 21 Abs. 5 ApBetrO)"}]}, {"title": "14. DOKUMENTATION SPEZIAL (§§ 17â19 ApBetrO)", "items": [{"nr": "14.1", "text": "Blutprodukte: Charge, Menge, Lieferant dokumentiert (§ 17 Abs. 6a ApBetrO)"}, {"nr": "14.2", "text": "T-Rezepte: Chargennachweis dokumentiert (§ 17 Abs. 6b ApBetrO)"}, {"nr": "14.3", "text": "Import von AM: Charge + Namenszeichen verantwortlicher Apotheker (§ 18 ApBetrO)"}, {"nr": "14.4", "text": "Verschreibungspflichtige AM für Tiere: Erwerb und Abgabe dokumentiert (§ 19 ApBetrO)"}, {"nr": "14.5", "text": "Bezug AM über andere Apotheken (inkl. Filialverbund): Chargennachweis (§ 17 Abs. 6c ApBetrO)"}]}, {"title": "15. WISSENSCHAFTLICHE HILFSMITTEL (§ 5 ApBetrO)", "items": [{"nr": "15.1", "text": "Ph. Eur. aktuell vorhanden (nicht nur online â lokal installiert/verfügbar)"}, {"nr": "15.2", "text": "DAB mit HAB aktuell vorhanden"}, {"nr": "15.3", "text": "Weitere wissenschaftliche Hilfsmittel vorhanden (NRF, Fachinformationen)"}, {"nr": "15.4", "text": "Texte der gesetzlichen Vorschriften aktuell (lokal installiert oder Datenträger)"}]}, {"title": "16. EDV & ELEKTRONISCHE DOKUMENTATION (§ 22 ApBetrO)", "items": [{"nr": "16.1", "text": "Systembeschreibung der eingesetzten Software vorhanden"}, {"nr": "16.2", "text": "Nachträgliche Ãnderung von Daten erkennbar â Audit Trail vorhanden (§ 22 Abs. 1 ApBetrO)"}, {"nr": "16.3", "text": "Jeder Mitarbeiter mit eigenem Zugangscode â Zugangsdaten nicht weitergegeben"}, {"nr": "16.4", "text": "Schulungsnachweis für EDV-Anwendungen vorhanden"}, {"nr": "16.5", "text": "Datensicherung täglich, Backup-Medien vor Feuer/Wasser/Strahlung geschützt"}, {"nr": "16.6", "text": "Daten während Aufbewahrungsfrist lesbar und abrufbar (§ 22 Abs. 2 ApBetrO)"}, {"nr": "16.7", "text": "Bei Cloud-Nutzung: schriftlicher Vertrag analog § 11a ApBetrO vorhanden"}, {"nr": "16.8", "text": "Notfallplan bei EDV-Ausfall / Internetausfall im QMS festgelegt"}, {"nr": "16.9", "text": "USV (unterbrechungsfreie Stromversorgung) für EDV-Anlage vorhanden"}, {"nr": "16.10", "text": "Bei hybridem System: eindeutige Verknüpfung Ausdruck und elektronisches Dokument"}]}, {"title": "17. PARENTERALIA / ZYTOSTATIKA (§ 35 ApBetrO) â falls zutreffend", "items": [{"nr": "17.1", "text": "QMS umfasst alle Festlegungen gemäÃ § 35 Abs. 1 ApBetrO"}, {"nr": "17.2", "text": "Herstellung in separatem Reinraum, GMP-gerechte Ausstattung (§ 35 Abs. 3 ApBetrO)"}, {"nr": "17.3", "text": "Reinraumklasse nachgewiesen (Qualifizierung + regelmäÃige Requalifizierung)"}, {"nr": "17.4", "text": "RLT-Anlage geeignet: Filterklasse, Druckdifferenzen eingehalten"}, {"nr": "17.5", "text": "Sicherheitswerkbank: Stand der Technik, Wartungsvertrag, DIN 12980 konform"}, {"nr": "17.6", "text": "Partikel-Monitoring-Gerät vorhanden und genutzt (§ 35 Abs. 5 ApBetrO)"}, {"nr": "17.7", "text": "Prozessbegleitendes Monitoring: Partikel- und Keimzahlbestimmungen dokumentiert"}, {"nr": "17.8", "text": "Personalschulung Erstschulung + regelmäÃige Folgeschulung dokumentiert"}, {"nr": "17.9", "text": "Schutzkleidung vollständig (Bereichskleidung, Kopfbedeckung, sterile Handschuhe, Maske)"}, {"nr": "17.10", "text": "Arbeitstäglicher Wechsel der Schutzkleidung dokumentiert (§ 35 Abs. 3 ApBetrO)"}, {"nr": "17.11", "text": "Dekontaminationsset für Zytostatika-Unfälle bereitgehalten (TRGS 525)"}, {"nr": "17.12", "text": "Media Fill Validierung durchgeführt (§ 35 Abs. 1 Nr. 4 ApBetrO)"}, {"nr": "17.13", "text": "Simuliertes Produkt am Ende jedes Arbeitstages hergestellt und dokumentiert"}, {"nr": "17.14", "text": "Anbruchsvalidierung durchgeführt, Anbrüche nicht über validierten Zeitraum gelagert"}, {"nr": "17.15", "text": "Bestandsführung Zytostatika: Warenwirtschaftsprogramm und physischer Bestand stimmen überein"}, {"nr": "17.16", "text": "Retouren-Management für Zytostatika dokumentiert"}, {"nr": "17.17", "text": "Ausgangsstoffe (FAM) und Primärpackmittel: Qualitätsprüfung durchgeführt"}, {"nr": "17.18", "text": "Herstellungsprotokoll: alle Pflichtangaben incl. Patientenname, Arztname, Charge"}, {"nr": "17.19", "text": "4-Augen-Prinzip bei Berechnung / Einwaage (oder validiertes elektronisches Verfahren)"}, {"nr": "17.20", "text": "Kühllagerung und bruchsichere Behälter für Transport Zytostatika (TRGS 525)"}]}];
+const DATA = [{"title": "1. BETRIEBSERLAUBNIS & ZULASSUNGEN", "items": [{"nr": "1.1", "text": "Betriebserlaubnis (§ 1 ApoG) vorhanden und aktuell"}, {"nr": "1.2", "text": "Apothekenleiter-Bestallungsurkunde / Approbationsurkunde liegt vor"}, {"nr": "1.3", "text": "Stellvertretungsregelung dokumentiert (§ 2 Abs. 6 ApoG)"}, {"nr": "1.4", "text": "Filialapotheken: eigene Betriebserlaubnisse vorhanden (falls zutreffend)"}, {"nr": "1.5", "text": "Versandhandelserlaubnis aktuell (falls zutreffend, § 11a ApoG)"}, {"nr": "1.6", "text": "EU-Sicherheitslogo sichtbar auf Website (Versand)"}]}, {"title": "2. RÄUMLICHKEITEN & AUSSTATTUNG (§§ 4–8 ApBetrO)", "items": [{"nr": "2.1", "text": "Offizin: Mindestfläche erfüllt, übersichtlich und sauber"}, {"nr": "2.2", "text": "Labor vorhanden und funktionsfähig ausgestattet"}, {"nr": "2.3", "text": "Nachtdienstzimmer vorhanden (falls Notdienst)"}, {"nr": "2.4", "text": "Sozialraum / Toilette vorhanden"}, {"nr": "2.5", "text": "Kühlschrank: geeicht, Temperaturprotokoll geführt (2–8 °C)"}, {"nr": "2.6", "text": "Tiefkühleinheit vorhanden und protokolliert (falls erforderlich)"}, {"nr": "2.7", "text": "Brandschutz: Feuerlöscher geprüft, Fluchtweg frei"}, {"nr": "2.8", "text": "Sicherheitsschrank für BtM vorhanden, VdS-zugelassen"}, {"nr": "2.9", "text": "Waagen geeicht (Eichschein aktuell)"}, {"nr": "2.10", "text": "Destillieranlage / Autoklav (falls vorhanden): geprüft"}]}, {"title": "3. PERSONAL & FORTBILDUNG (§§ 2–3 ApBetrO)", "items": [{"nr": "3.1", "text": "Approbation aller approbierten Mitarbeiter/innen vorhanden"}, {"nr": "3.2", "text": "Fortbildungsnachweise Apothekenleiter/in: ≥ 60 h / 3 Jahre"}, {"nr": "3.3", "text": "Fortbildungsnachweise PTA und Apotheker/innen aktuell"}, {"nr": "3.4", "text": "Mitarbeiterliste mit Qualifikationen und Arbeitszeiten gepflegt"}, {"nr": "3.5", "text": "Einweisungsnachweise für neue Mitarbeiter/innen vorhanden"}, {"nr": "3.6", "text": "Schulungsnachweise Hygiene, Datenschutz vorhanden"}]}, {"title": "4. BETÄUBUNGSMITTEL (BtMG, BtMVV)", "items": [{"nr": "4.1", "text": "BtM-Kartei / EDV-Buchführung vollständig und aktuell"}, {"nr": "4.2", "text": "Bestandsnachweis: Soll-/Ist-Abgleich dokumentiert"}, {"nr": "4.3", "text": "BtM-Rezepte korrekt geprüft und 3 Jahre aufbewahrt"}, {"nr": "4.4", "text": "BtM-Safe: gesichert, Schlüsselprotokoll vorhanden"}, {"nr": "4.5", "text": "Vernichtungsprotokoll für verfallene BtM vorhanden"}, {"nr": "4.6", "text": "T-Rezepte (Thalidomid etc.) korrekt gehandhabt"}]}, {"title": "5. ARZNEIMITTELSICHERHEIT & LAGERUNG (§ 15 ApBetrO, AMG)", "items": [{"nr": "5.1", "text": "Securpharm-System aktiv und dokumentiert"}, {"nr": "5.2", "text": "Verfallsdaten-Monitoring: System vorhanden und aktuell"}, {"nr": "5.3", "text": "Chargenrückrufe: Prozess dokumentiert, aktueller Rückruf geprüft"}, {"nr": "5.4", "text": "Trennung: frei verkäuflich / verschreibungspflichtig / BtM eingehalten"}, {"nr": "5.5", "text": "Lichtempfindliche Arzneimittel korrekt gelagert"}, {"nr": "5.6", "text": "Ausgangsstoffe: DAB/Ph. Eur.-konform, Prüfzertifikate vorhanden"}, {"nr": "5.7", "text": "Entsorgung: Pharmazeutische Abfälle gemäß Entsorgungsnachweis"}]}, {"title": "6. REZEPTURHERSTELLUNG (§§ 7, 8 ApBetrO)", "items": [{"nr": "6.1", "text": "Herstellungsprotokoll für jede Rezeptur vorhanden"}, {"nr": "6.2", "text": "Qualitätsprüfung: Prüfprotokoll mit Freigabe dokumentiert"}, {"nr": "6.3", "text": "Ausgangsstoff-Prüfzertifikate und Chargenrückverfolgung gesichert"}, {"nr": "6.4", "text": "Defektur: Chargenprotokoll und Stabilitätsdaten vorhanden"}, {"nr": "6.5", "text": "NRF-Vorschriften eingehalten (Kennzeichnung, Haltbarkeit)"}]}, {"title": "7. QUALITÄTSMANAGEMENTSYSTEM (§ 2a ApBetrO)", "items": [{"nr": "7.1", "text": "QMS-Handbuch vorhanden und aktuell"}, {"nr": "7.2", "text": "SOPs für alle kritischen Prozesse erstellt und freigegeben"}, {"nr": "7.3", "text": "Hygieneplan vorhanden und aktuell (Reinigungs-/Desinfektionsplan)"}, {"nr": "7.4", "text": "CIRS (Fehlermeldesystem) implementiert und genutzt"}, {"nr": "7.5", "text": "Interne Selbstinspektion dokumentiert (letzte 12 Monate)"}, {"nr": "7.6", "text": "Reklamationsprotokoll geführt"}]}, {"title": "8. REZEPTBELIEFERUNG & DOKUMENTATION (§§ 17, 22 ApBetrO)", "items": [{"nr": "8.1", "text": "GKV-Rezepte: Retax-sichere Prüfung dokumentiert"}, {"nr": "8.2", "text": "Privatrezepte: Aufbewahrung gemäß § 17 Abs. 6 ApBetrO (3 Jahre)"}, {"nr": "8.3", "text": "Aut-idem-Substitution: Dokumentation und Patienteninfo vorhanden"}, {"nr": "8.4", "text": "Botendienst: Kühlkette und Übergabedokumentation geregelt"}]}, {"title": "9. DATENSCHUTZ & IT (DSGVO, § 5 ApBetrO)", "items": [{"nr": "9.1", "text": "Datenschutzerklärung (Website / Versand) aktuell"}, {"nr": "9.2", "text": "Datenschutzbeauftragter benannt (falls erforderlich)"}, {"nr": "9.3", "text": "EDV-Datensicherung dokumentiert und getestet"}, {"nr": "9.4", "text": "Zugriffsrechte im Apothekensystem geregelt (Rollenkonzept)"}]}, {"title": "10. SONSTIGE UNTERLAGEN & AUSHÄNGE", "items": [{"nr": "10.1", "text": "Preisaushang / Preisliste gemäß AMPreisV aktuell"}, {"nr": "10.2", "text": "Gefahrstoffverzeichnis und Sicherheitsdatenblätter (SDS) vorhanden"}, {"nr": "10.3", "text": "Erste-Hilfe-Ausstattung vorhanden und geprüft"}, {"nr": "10.4", "text": "Hinweis auf Beschwerdestelle und zuständige Behörde ausgehängt"}, {"nr": "10.5", "text": "Notdienstplanung eingereicht / dokumentiert"}, {"nr": "10.6", "text": "Pflichtaushänge (Öffnungszeiten, Notdienst, Inhaber) vollständig"}]}, {"title": "11. APOTHEKENBETRIEB – SONDERTÄTIGKEITEN", "items": [{"nr": "11.1", "text": "AM-Versorgung Heim: Vertrag vorhanden, Protokoll V geführt (§ 12a ApoG)"}, {"nr": "11.2", "text": "Patientenindividuelles Stellen / Verblistern: separater Raum vorhanden (§ 34 Abs. 3 ApBetrO)"}, {"nr": "11.3", "text": "AM-Versorgung Rettungsdienst: Protokoll V geführt (§ 14 ApoG)"}, {"nr": "11.4", "text": "Krankenhausversorgung: Protokoll V vorhanden (§ 14 Abs. 5 ApoG)"}, {"nr": "11.5", "text": "Substitution nach § 5 BtMVV: Protokoll S geführt"}, {"nr": "11.6", "text": "Impfungen: Schulung dokumentiert, Protokoll I vorhanden"}, {"nr": "11.7", "text": "Deckungsvorsorge / Produkthaftpflicht abgeschlossen (§ 94 AMG)"}, {"nr": "11.8", "text": "Standardzulassungen: Anzeige nach § 67 Abs. 5 AMG erfolgt"}, {"nr": "11.9", "text": "Prüfpräparate (§ 13 Abs. 1a Nr. 4 AMG): Erlaubnis bzw. Nachweis vorhanden"}, {"nr": "11.10", "text": "Tätigkeiten im Auftrag: Verantwortungsabgrenzungsvertrag vorhanden (§ 11a Abs. 1 ApBetrO)"}]}, {"title": "12. RÄUME & EINRICHTUNGEN – DETAIL (§ 4 ApBetrO)", "items": [{"nr": "12.1", "text": "Kennzeichnung Fassade / Eingänge ordnungsgemäß"}, {"nr": "12.2", "text": "Aushang dienstbereiter Apotheken vorhanden (§ 23 Abs. 5 ApBetrO)"}, {"nr": "12.3", "text": "Notdienstklappe / Klingel / Wechselsprechanlage funktionsfähig"}, {"nr": "12.4", "text": "Barrierefreier Zugang Offizin geprüft (§ 4 Abs. 2a ApBetrO)"}, {"nr": "12.5", "text": "Vertraulichkeit der Beratung gewährleistet (Sichtschutz / separater Bereich)"}, {"nr": "12.6", "text": "Räumliche Einheit gegeben – kein Raum außerhalb genutzt (§ 4 Abs. 1 Nr. 5 ApBetrO)"}, {"nr": "12.7", "text": "Abtrennung von Gewerberäumen / Verkehrsflächen / Großhandel"}, {"nr": "12.8", "text": "Sichere Anlieferung außerhalb Dienstzeit – Lagertemperatur überwacht (§ 4 Abs. 2d ApBetrO)"}, {"nr": "12.9", "text": "Teerezeptur ordnungsgemäß eingerichtet (§ 4 Abs. 2c ApBetrO)"}]}, {"title": "13. VORRATSHALTUNG & ABGABE – DETAIL (§§ 15–17 ApBetrO)", "items": [{"nr": "13.1", "text": "Keine apothekenpflichtigen AM in der Freiwahl (§ 17 Abs. 3 ApBetrO)"}, {"nr": "13.2", "text": "Keine Kundenzugriffsmöglichkeit zur Sichtwahl (§ 17 Abs. 3 ApBetrO)"}, {"nr": "13.3", "text": "Apothekenübliche Waren in Art und Menge (§§ 1a Abs. 10, 2 Abs. 4 ApBetrO)"}, {"nr": "13.4", "text": "Antidota / Notfallsortiment vollständig (§ 15 Abs. 1 ApBetrO)"}, {"nr": "13.5", "text": "Hinweis auf Notfalldepot vorhanden (§ 15 Abs. 2 ApBetrO)"}, {"nr": "13.6", "text": "Fertigarzneimittelprüfprotokolle: Anzahl ausreichend, Namenszeichen vorhanden (§ 12 ApBetrO)"}, {"nr": "13.7", "text": "Qualitätsmangel AM: LDS informiert (§ 21 Abs. 3 ApBetrO)"}, {"nr": "13.8", "text": "Fälschungsverdacht: gesicherte Lagerung dokumentiert (§ 21 Abs. 5 ApBetrO)"}]}, {"title": "14. DOKUMENTATION SPEZIAL (§§ 17–19 ApBetrO)", "items": [{"nr": "14.1", "text": "Blutprodukte: Charge, Menge, Lieferant dokumentiert (§ 17 Abs. 6a ApBetrO)"}, {"nr": "14.2", "text": "T-Rezepte: Chargennachweis dokumentiert (§ 17 Abs. 6b ApBetrO)"}, {"nr": "14.3", "text": "Import von AM: Charge + Namenszeichen verantwortlicher Apotheker (§ 18 ApBetrO)"}, {"nr": "14.4", "text": "Verschreibungspflichtige AM für Tiere: Erwerb und Abgabe dokumentiert (§ 19 ApBetrO)"}, {"nr": "14.5", "text": "Bezug AM über andere Apotheken (inkl. Filialverbund): Chargennachweis (§ 17 Abs. 6c ApBetrO)"}]}, {"title": "15. WISSENSCHAFTLICHE HILFSMITTEL (§ 5 ApBetrO)", "items": [{"nr": "15.1", "text": "Ph. Eur. aktuell vorhanden (nicht nur online – lokal installiert/verfügbar)"}, {"nr": "15.2", "text": "DAB mit HAB aktuell vorhanden"}, {"nr": "15.3", "text": "Weitere wissenschaftliche Hilfsmittel vorhanden (NRF, Fachinformationen)"}, {"nr": "15.4", "text": "Texte der gesetzlichen Vorschriften aktuell (lokal installiert oder Datenträger)"}]}, {"title": "16. EDV & ELEKTRONISCHE DOKUMENTATION (§ 22 ApBetrO)", "items": [{"nr": "16.1", "text": "Systembeschreibung der eingesetzten Software vorhanden"}, {"nr": "16.2", "text": "Nachträgliche Änderung von Daten erkennbar – Audit Trail vorhanden (§ 22 Abs. 1 ApBetrO)"}, {"nr": "16.3", "text": "Jeder Mitarbeiter mit eigenem Zugangscode – Zugangsdaten nicht weitergegeben"}, {"nr": "16.4", "text": "Schulungsnachweis für EDV-Anwendungen vorhanden"}, {"nr": "16.5", "text": "Datensicherung täglich, Backup-Medien vor Feuer/Wasser/Strahlung geschützt"}, {"nr": "16.6", "text": "Daten während Aufbewahrungsfrist lesbar und abrufbar (§ 22 Abs. 2 ApBetrO)"}, {"nr": "16.7", "text": "Bei Cloud-Nutzung: schriftlicher Vertrag analog § 11a ApBetrO vorhanden"}, {"nr": "16.8", "text": "Notfallplan bei EDV-Ausfall / Internetausfall im QMS festgelegt"}, {"nr": "16.9", "text": "USV (unterbrechungsfreie Stromversorgung) für EDV-Anlage vorhanden"}, {"nr": "16.10", "text": "Bei hybridem System: eindeutige Verknüpfung Ausdruck und elektronisches Dokument"}]}, {"title": "17. PARENTERALIA / ZYTOSTATIKA (§ 35 ApBetrO) – falls zutreffend", "items": [{"nr": "17.1", "text": "QMS umfasst alle Festlegungen gemäß § 35 Abs. 1 ApBetrO"}, {"nr": "17.2", "text": "Herstellung in separatem Reinraum, GMP-gerechte Ausstattung (§ 35 Abs. 3 ApBetrO)"}, {"nr": "17.3", "text": "Reinraumklasse nachgewiesen (Qualifizierung + regelmäßige Requalifizierung)"}, {"nr": "17.4", "text": "RLT-Anlage geeignet: Filterklasse, Druckdifferenzen eingehalten"}, {"nr": "17.5", "text": "Sicherheitswerkbank: Stand der Technik, Wartungsvertrag, DIN 12980 konform"}, {"nr": "17.6", "text": "Partikel-Monitoring-Gerät vorhanden und genutzt (§ 35 Abs. 5 ApBetrO)"}, {"nr": "17.7", "text": "Prozessbegleitendes Monitoring: Partikel- und Keimzahlbestimmungen dokumentiert"}, {"nr": "17.8", "text": "Personalschulung Erstschulung + regelmäßige Folgeschulung dokumentiert"}, {"nr": "17.9", "text": "Schutzkleidung vollständig (Bereichskleidung, Kopfbedeckung, sterile Handschuhe, Maske)"}, {"nr": "17.10", "text": "Arbeitstäglicher Wechsel der Schutzkleidung dokumentiert (§ 35 Abs. 3 ApBetrO)"}, {"nr": "17.11", "text": "Dekontaminationsset für Zytostatika-Unfälle bereitgehalten (TRGS 525)"}, {"nr": "17.12", "text": "Media Fill Validierung durchgeführt (§ 35 Abs. 1 Nr. 4 ApBetrO)"}, {"nr": "17.13", "text": "Simuliertes Produkt am Ende jedes Arbeitstages hergestellt und dokumentiert"}, {"nr": "17.14", "text": "Anbruchsvalidierung durchgeführt, Anbrüche nicht über validierten Zeitraum gelagert"}, {"nr": "17.15", "text": "Bestandsführung Zytostatika: Warenwirtschaftsprogramm und physischer Bestand stimmen überein"}, {"nr": "17.16", "text": "Retouren-Management für Zytostatika dokumentiert"}, {"nr": "17.17", "text": "Ausgangsstoffe (FAM) und Primärpackmittel: Qualitätsprüfung durchgeführt"}, {"nr": "17.18", "text": "Herstellungsprotokoll: alle Pflichtangaben incl. Patientenname, Arztname, Charge"}, {"nr": "17.19", "text": "4-Augen-Prinzip bei Berechnung / Einwaage (oder validiertes elektronisches Verfahren)"}, {"nr": "17.20", "text": "Kühllagerung und bruchsichere Behälter für Transport Zytostatika (TRGS 525)"}]}];
 const STATUSES = ["Offen","In Arbeit","Erledigt","N/A"];
 const S_BORDER = {"Offen":"#c41e3a","In Arbeit":"#c87800","Erledigt":"#036918","N/A":"#6b7a6d"};
 
@@ -256,7 +262,7 @@ function loadAll(){
 }
 function saveAll(){ ss("ea_st",state); ss("ea_cu",custom); scheduleSave(); }
 
-// ââ Build sections âââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ── Build sections ─────────────────────────────────────────────────────────
 function buildUI(){
   const main = document.getElementById("main");
   main.innerHTML = "";
@@ -281,13 +287,13 @@ function buildUI(){
     head.id = "head-"+si;
     head.innerHTML = `
       <div class="sec-title" id="sec-title-${si}">
-        <span class="sec-check" id="sec-check-${si}" style="display:none">â</span>
+        <span class="sec-check" id="sec-check-${si}" style="display:none">✓</span>
         ${sec.title}
       </div>
       <div class="sec-meta">
         <div class="sec-minibar"><div class="sec-minibar-fill" id="mb-${si}" style="width:0%"></div></div>
         <span class="sec-count" id="sc-${si}">0/${allItems.length}</span>
-        <span class="sec-toggle">â¾</span>
+        <span class="sec-toggle">▾</span>
       </div>`;
     head.addEventListener("click", () => block.classList.toggle("collapsed"));
 
@@ -302,7 +308,7 @@ function buildUI(){
     // Add button
     const addRow = document.createElement("div");
     addRow.className = "add-row";
-    addRow.innerHTML = `<button class="add-btn" onclick="openModal(${si})">ï¼ Prüfpunkt hinzufügen</button>`;
+    addRow.innerHTML = `<button class="add-btn" onclick="openModal(${si})">＋ Prüfpunkt hinzufügen</button>`;
 
     block.appendChild(head);
     block.appendChild(body);
@@ -327,7 +333,7 @@ function renderItem(body, item, si){
   const textClass = st==="Erledigt"?"done":st==="N/A"?"na":"";
   const customBadge = isCustom ? `<span class="custom-badge">+ eigener</span>` : "";
   const metaHtml = meta ? `<div class="item-meta">${meta.who} · ${meta.ts}</div>` : "";
-  const delBtn = isCustom ? `<button class="del-btn" title="Löschen" onclick="delItem('${item.nr}',event)">â</button>` : "";
+  const delBtn = isCustom ? `<button class="del-btn" title="Löschen" onclick="delItem('${item.nr}',event)">✕</button>` : "";
 
   const btnHTML = STATUSES.map(s => {
     const key = s.replace(" ","");
@@ -335,19 +341,28 @@ function renderItem(body, item, si){
     return `<button class="${cls}" data-s="${s}" onclick="setSt('${item.nr}',this)">${s}</button>`;
   }).join("");
 
+  const whoLabel = meta ? `<span class="item-who has-name">${meta.who} · ${meta.ts.split(', ')[1] || meta.ts}</span>` : '<span class="item-who"></span>';
   div.innerHTML = `
     <span class="item-nr">${item.nr}</span>
     <div class="item-body">
       <span class="item-text ${textClass}">${item.text}${customBadge}</span>
-      ${metaHtml}
     </div>
-    <div class="item-controls">${btnHTML}${delBtn}</div>`;
+    <div class="item-controls">${btnHTML}${whoLabel}${delBtn}</div>`;
   body.appendChild(div);
 }
 
-// ââ Set status âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ── Set status ─────────────────────────────────────────────────────────────
 function setSt(nr, btn){
-  const who = document.getElementById("userName").value.trim() || "â";
+  const _nameVal = document.getElementById("userName").value.trim();
+  if(!_nameVal){
+    const _inp = document.getElementById("userName");
+    _inp.classList.add("missing");
+    _inp.focus();
+    const _hint = document.getElementById("nameHint");
+    if(_hint){ _hint.classList.add("show"); setTimeout(()=>{ _inp.classList.remove("missing"); _hint.classList.remove("show"); },3000); }
+    return;
+  }
+  const who = _nameVal;
   const ts = new Date().toLocaleString("de-DE");
   const st = btn.dataset.s;
   state[nr] = {status:st,who,ts};
@@ -367,22 +382,22 @@ function setSt(nr, btn){
   });
 
   // Update meta
-  let metaEl = row.querySelector(".item-meta");
-  if (!metaEl) {
-    metaEl = document.createElement("div");
-    metaEl.className = "item-meta";
-    row.querySelector(".item-body").appendChild(metaEl);
+  // Update inline who-label in controls
+  const whoEl = row.querySelector(".item-who");
+  if(whoEl){
+    whoEl.textContent = who + " · " + ts.split(", ")[1];
+    whoEl.classList.add("has-name");
   }
-  metaEl.textContent = `${who} · ${ts}`;
 
   if (curFilter!=="all" && st!==curFilter) row.classList.add("hidden-item");
   else row.classList.remove("hidden-item");
 
   updateStats();
-  showToast(`${nr} â ${st}`);
+  showToast(`${nr} → ${st}`);
+  scheduleSave();
 }
 
-// ââ Delete custom ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ── Delete custom ──────────────────────────────────────────────────────────
 function delItem(nr, e){
   e.stopPropagation();
   if (!confirm("Diesen Prüfpunkt löschen?")) return;
@@ -394,7 +409,7 @@ function delItem(nr, e){
   updateStats();
 }
 
-// ââ Stats ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ── Stats ──────────────────────────────────────────────────────────────────
 function getAllItems(){
   const all=[];
   DATA.forEach((sec,si)=>{
@@ -457,7 +472,7 @@ function updateStats(){
   });
 }
 
-// ââ Filter ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ── Filter ──────────────────────────────────────────────────────────────────
 function applyFilter(f){
   curFilter=f;
   document.querySelectorAll(".filter-btn").forEach(b=>b.classList.toggle("active",b.dataset.f===f));
@@ -473,7 +488,7 @@ function applyFilter(f){
 document.querySelectorAll(".filter-btn").forEach(b=>b.addEventListener("click",()=>applyFilter(b.dataset.f)));
 document.head.insertAdjacentHTML("beforeend","<style>.hidden-item{display:none!important}</style>");
 
-// ââ Modal ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ── Modal ──────────────────────────────────────────────────────────────────
 let activeSi=0;
 function openModal(si){
   activeSi=si;
@@ -495,7 +510,16 @@ document.getElementById("mSec").addEventListener("change",function(){
 function saveItem(){
   const text=document.getElementById("mText").value.trim();
   if(!text){document.getElementById("mText").focus();return;}
-  const who=document.getElementById("userName").value.trim()||"â";
+  const _nameVal2 = document.getElementById("userName").value.trim();
+  if(!_nameVal2){
+    closeModal();
+    const _inp2=document.getElementById("userName");
+    _inp2.classList.add("missing"); _inp2.focus();
+    const _hint2=document.getElementById("nameHint");
+    if(_hint2){ _hint2.classList.add("show"); setTimeout(()=>{ _inp2.classList.remove("missing"); _hint2.classList.remove("show"); },3000); }
+    return;
+  }
+  const who=_nameVal2;
   const ts=new Date().toLocaleString("de-DE");
   let nr=document.getElementById("mNr").value.trim()||("K"+(activeSi+1)+"."+(custom.filter(c=>c.si===activeSi).length+1));
   const item={id:Date.now(),si:activeSi,nr,text,custom:true,who,ts};
@@ -509,27 +533,28 @@ function saveItem(){
   closeModal();
 }
 
-// ââ User ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ── User ──────────────────────────────────────────────────────────────────
 const uIn=document.getElementById("userName");
 const uCk=document.getElementById("userCheck");
 uIn.addEventListener("input",()=>{
   const v=uIn.value.trim();
   uCk.style.display=v?"inline":"none";
+  if(v){ uIn.classList.remove("missing"); const h=document.getElementById("nameHint"); if(h) h.classList.remove("show"); }
   ss("ea_user",v);
 });
 const savedUser=ls("ea_user","");
 if(savedUser){uIn.value=savedUser;uCk.style.display="inline";}
 
-// ââ Toast âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ── Toast ─────────────────────────────────────────────────────────────────
 function showToast(msg){
   const t=document.getElementById("toast");
-  t.textContent="â "+msg;
+  t.textContent="✓ "+msg;
   t.classList.add("show");
   clearTimeout(toastTimer);
   toastTimer=setTimeout(()=>t.classList.remove("show"),2800);
 }
 
-// ââ Export ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ── Export ────────────────────────────────────────────────────────────────
 function exportCSV(){
   const rows=["\uFEFFNr.;Prüfpunkt;Eigener Punkt;Status;Bearbeiter;Zeitstempel"];
   DATA.forEach(sec=>sec.items.forEach(it=>{
@@ -545,117 +570,100 @@ function exportCSV(){
   a.download="Apotheke_Checkliste_Export.csv";a.click();
 }
 
-// ââ GitHub Sync âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
-const REPO  = "SRonn15/apotheke-checkliste";
-const FILE  = "data.json";
+// ── GitHub Sync ───────────────────────────────────────────────────────────
+const REPO = "SRonn15/apotheke-checkliste";
+const DFILE = "data.json";
 let syncTimer = null;
 let isSyncing = false;
-let lastSha   = null;
+let lastSha = null;
 
-function getToken() {
-  return document.getElementById("ghToken").value.trim() ||
-         ls("ea_ghtoken", "");
+function getToken(){
+  return document.getElementById("ghToken").value.trim() || ls("ea_ghtoken","");
 }
 
-function setSyncStatus(status, msg) {
+function setSyncStatus(cls, msg){
   const dot = document.getElementById("syncDot");
   const txt = document.getElementById("syncMsg");
-  dot.className = "sync-dot " + status;
-  txt.textContent = msg;
+  if(dot) dot.className = "sync-dot " + cls;
+  if(txt) txt.textContent = msg;
 }
 
-async function loadFromGitHub() {
+async function loadFromGitHub(){
   const token = getToken();
-  if (!token) { setSyncStatus("", "Kein Token â nur lokaler Speicher"); return; }
-  setSyncStatus("saving", "Lade Daten â¦");
-  try {
-    const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE}`, {
-      headers: { "Authorization": "token " + token, "Accept": "application/vnd.github.v3+json" }
+  if(!token){ setSyncStatus("","Token eingeben für Sync"); return; }
+  setSyncStatus("saving","Lade Cloud-Daten …");
+  try{
+    const r = await fetch("https://api.github.com/repos/"+REPO+"/contents/"+DFILE,{
+      headers:{"Authorization":"token "+token,"Accept":"application/vnd.github.v3+json"}
     });
-    if (r.status === 404) {
-      setSyncStatus("ok", "Bereit â noch keine Cloud-Daten");
-      return;
-    }
-    if (!r.ok) throw new Error("HTTP " + r.status);
+    if(r.status===404){ setSyncStatus("ok","Bereit – noch keine Cloud-Daten"); return; }
+    if(!r.ok) throw new Error("HTTP "+r.status);
     const d = await r.json();
     lastSha = d.sha;
-    const content = JSON.parse(atob(d.content.replace(/\n/g, "")));
-    // Merge: cloud wins for any key present in cloud
-    Object.assign(state, content.state || {});
-    custom = content.custom || custom;
-    saveAll();
+    const bytes = Uint8Array.from(atob(d.content.replace(/\n/g,"")), c=>c.charCodeAt(0));
+    const content = JSON.parse(new TextDecoder().decode(bytes));
+    if(content.state) Object.assign(state, content.state);
+    if(content.custom && content.custom.length) custom = content.custom;
+    ss("ea_st", state);
+    ss("ea_cu", custom);
     buildUI();
-    setSyncStatus("ok", "Synchronisiert · " + new Date().toLocaleTimeString("de-DE"));
-  } catch(e) {
-    setSyncStatus("error", "Fehler: " + e.message);
+    setSyncStatus("ok","Synchronisiert · "+new Date().toLocaleTimeString("de-DE"));
+  } catch(e){
+    setSyncStatus("error","Fehler: "+e.message);
   }
 }
 
-async function saveToGitHub() {
+async function saveToGitHub(){
   const token = getToken();
-  if (!token || isSyncing) return;
+  if(!token || isSyncing) return;
   isSyncing = true;
-  setSyncStatus("saving", "Speichere â¦");
-  try {
-    // Get current SHA first
-    const getR = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE}`, {
-      headers: { "Authorization": "token " + token, "Accept": "application/vnd.github.v3+json" }
+  setSyncStatus("saving","Speichere …");
+  try{
+    const getR = await fetch("https://api.github.com/repos/"+REPO+"/contents/"+DFILE,{
+      headers:{"Authorization":"token "+token,"Accept":"application/vnd.github.v3+json"}
     });
-    if (getR.ok) { const gd = await getR.json(); lastSha = gd.sha; }
-
-    const payload = { state, custom };
-    const content = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
-    const body = { message: "Sync " + new Date().toISOString(), content };
-    if (lastSha) body.sha = lastSha;
-
-    const putR = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE}`, {
-      method: "PUT",
-      headers: {
-        "Authorization": "token " + token,
-        "Accept": "application/vnd.github.v3+json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(body)
+    if(getR.ok){ const gd = await getR.json(); lastSha = gd.sha; }
+    const payload = {state:state, custom:custom};
+    const enc = new TextEncoder().encode(JSON.stringify(payload));
+    let bin = ""; enc.forEach(b => bin += String.fromCharCode(b));
+    const b64 = btoa(bin);
+    const body = {message:"Sync "+new Date().toISOString(), content:b64};
+    if(lastSha) body.sha = lastSha;
+    const putR = await fetch("https://api.github.com/repos/"+REPO+"/contents/"+DFILE,{
+      method:"PUT",
+      headers:{"Authorization":"token "+token,"Accept":"application/vnd.github.v3+json","Content-Type":"application/json"},
+      body:JSON.stringify(body)
     });
-    if (!putR.ok) throw new Error("HTTP " + putR.status);
+    if(!putR.ok) throw new Error("HTTP "+putR.status);
     const pd = await putR.json();
     lastSha = pd.content.sha;
-    setSyncStatus("ok", "Gespeichert · " + new Date().toLocaleTimeString("de-DE"));
-  } catch(e) {
-    setSyncStatus("error", "Fehler beim Speichern: " + e.message);
-  } finally {
+    setSyncStatus("ok","Gespeichert · "+new Date().toLocaleTimeString("de-DE"));
+  } catch(e){
+    setSyncStatus("error","Fehler: "+e.message);
+  } finally{
     isSyncing = false;
   }
 }
 
-function scheduleSave() {
+function scheduleSave(){
   clearTimeout(syncTimer);
   syncTimer = setTimeout(saveToGitHub, 2000);
 }
 
-// Patch saveAll to also trigger GitHub sync
-// sync via saveAll
-
 // Token input handler
-document.getElementById("ghToken").addEventListener("input", function() {
+document.getElementById("ghToken").addEventListener("input", function(){
   const v = this.value.trim();
-  if (v) {
-    ss("ea_ghtoken", v);
-    loadFromGitHub();
-  }
+  if(v){ ss("ea_ghtoken",v); loadFromGitHub(); }
 });
 
-// Pre-fill token if saved
-const savedToken = ls("ea_ghtoken", "");
-if (savedToken) {
-  document.getElementById("ghToken").value = savedToken;
-}
+// Pre-fill saved token
+const _savedTok = ls("ea_ghtoken","");
+if(_savedTok) document.getElementById("ghToken").value = _savedTok;
 
-// ââ Init ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ── Init ──────────────────────────────────────────────────────────────────
 loadAll();
 buildUI();
-if (getToken()) loadFromGitHub();
-
+if(getToken()) loadFromGitHub();
 </script>
 </body>
 </html>
