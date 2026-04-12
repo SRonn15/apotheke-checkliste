@@ -151,7 +151,7 @@ body{font-family:'Roboto',Arial,sans-serif;background:#fff;color:#1f1f1f;font-si
   .item-who{font-size:11px;color:#888;white-space:nowrap;padding-left:8px;align-self:center;min-width:80px}
   .item-who.has-name{color:#555;font-weight:500}
 
-  .reset-btn{position:fixed;bottom:20px;right:20px;background:#fff;border:1.5px solid #c41e3a;border-radius:99px;padding:10px 18px;font-family:inherit;font-size:13px;font-weight:700;color:#c41e3a;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,0.12);transition:all .2s;z-index:200}
+  .reset-btn{display:none;position:fixed;bottom:20px;right:20px;background:#fff;border:1.5px solid #c41e3a;border-radius:99px;padding:10px 18px;font-family:inherit;font-size:13px;font-weight:700;color:#c41e3a;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,0.12);transition:all .2s;z-index:200}
   .reset-btn:hover{background:#c41e3a;color:#fff}
 </style>
 </head>
@@ -539,6 +539,8 @@ uIn.addEventListener("input",()=>{
   const v=uIn.value.trim();
   uCk.style.display=v?"inline":"none";
   if(v){ uIn.classList.remove("missing"); const h=document.getElementById("nameHint"); if(h) h.classList.remove("show"); }
+  const rb=document.querySelector(".reset-btn");
+  if(rb) rb.style.display = v==="Sven" ? "block" : "none";
   ss("ea_user",v);
 });
 const savedUser=ls("ea_user","");
@@ -690,6 +692,9 @@ function resetAll(){
 loadAll();
 buildUI();
 if(getToken()) loadFromGitHub();
+// Show reset button only for Sven
+const _rb = document.querySelector(".reset-btn");
+if(_rb && ls("ea_user","") === "Sven") _rb.style.display = "block";
 </script>
 </body>
 </html>
