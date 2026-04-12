@@ -634,11 +634,7 @@ function scheduleSave() {
 }
 
 // Patch saveAll to also trigger GitHub sync
-const _origSaveAll = saveAll;
-function saveAll() {
-  _origSaveAll();
-  scheduleSave();
-}
+// sync via saveAll
 
 // Token input handler
 document.getElementById("ghToken").addEventListener("input", function() {
