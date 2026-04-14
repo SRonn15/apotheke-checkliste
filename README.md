@@ -1,2 +1,2 @@
 # apotheke-checkliste
-Kontrollvorbereitung Apothekenbesichtigung - Engelsdorfer Apotheke Leipzig
+Kontrollvorbereitung Apothekenbesichtigung
